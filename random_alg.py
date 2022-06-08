@@ -2,7 +2,7 @@ import random
 MAX_AMOUNT_TRAJECTS = 7
 MAX_TIME = 120
 
-with open("ConnectiesHolland.csv") as f:
+with open("csvfiles/ConnectiesHolland.csv") as f:
     connecties = f.readlines()
 all_connections = []
 
@@ -29,13 +29,13 @@ for i in range(MAX_AMOUNT_TRAJECTS):
                 options_next_station.append(i)
         if len(options_next_station) == 0:
             break
-        print("options: ")    
+        print("options: ")
         print(options_next_station)
         next_station = random.choices(options_next_station, k=1)[0]
         print("option next station: ")
         print(next_station)
         all_connections.remove(next_station)
-        
+
         traject.append(next_station[1])
         total_time += int(i[2])
         station = next_station[1]
