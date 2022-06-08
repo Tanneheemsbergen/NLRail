@@ -23,9 +23,9 @@ for i in range(MAX_AMOUNT_TRAJECTS):
 
     while  total_time < MAX_TIME:
         # print("station: ")
-        # print(station)
+        # print(station)gi
         options_next_station = []
-        for i in all_connections:
+        for i in copy_connecties:
             if i[0] == station:
                 options_next_station.append(i)
         if len(options_next_station) == 0:
