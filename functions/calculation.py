@@ -6,8 +6,7 @@ def calculate_quality(amount_of_connections, total_connections, total_time, T):
     T = amount of trajects
     Min = total amount of minutes
     """
-
-
+  
     p = amount_of_connections / total_connections
 
     K = p * 10000 - (T * 100 + total_time)
