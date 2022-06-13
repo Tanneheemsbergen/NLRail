@@ -18,7 +18,8 @@ def random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             options_next_station = []
             for i in copy_connecties:
                 if i[0] == station or i[1] == station:
-                    options_next_station.append(i)
+                    if  total_time + int(i[2]) <= MAX_TIME:
+                        options_next_station.append(i)
             if len(options_next_station) == 0:
                 break
 
@@ -39,7 +40,6 @@ def random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         total_time_traject += total_time
 
         trajects.append(traject)
-
 
     print(trajects)
     print(f"total time of all trajects: {total_time_traject}")
