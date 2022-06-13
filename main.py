@@ -1,5 +1,5 @@
 from functions.heuristics.random_alg import random_function
-from functions.heuristics.greedy import greedy_function
+from functions.heuristics.random_greedy import greedy_function
 
 # from functions.visualisation import visualisation
 with open("csvfiles/ConnectiesHolland.csv") as f:
