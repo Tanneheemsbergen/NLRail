@@ -27,8 +27,8 @@ def main (input_file_name, algorithm):
     # Determine which algorithm to use based on the user input
     if algorithm == "r":
         random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-    # elif algorithm = "g":
-    #     greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+    elif algorithm = "g":
+        greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
     # elif algorithm = "":
 
     # Visualization
