@@ -14,7 +14,7 @@ for line in connecties[1:]:
 MAX_AMOUNT_TRAJECTS = 7
 MAX_TIME = 120
 greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-#visualisation(traject, all_stations)
+# visualisation(traject, all_stations)
 
 # if __name__ == "__main__":
 #     # Set-up parsing command line arguments
