@@ -1,9 +1,10 @@
 from functions.heuristics.random_alg import random_function
-from classes.graph_class import Graph
+from functions.heuristics.random_greedy import greedy_function
+from functions.classes.graph_class import Graph
 import argparse
 #from functions.visualisation import visualisation
 
-def main (input_file_name, algorithm):  
+def main (input_file_name, algorithm):
     # Open de input document and create an empty list for connections
     with open(f"csvfiles/{input_file_name}.csv") as f:
         connecties = f.readlines()
@@ -27,7 +28,7 @@ def main (input_file_name, algorithm):
     # Determine which algorithm to use based on the user input
     if algorithm == "r":
         random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-    elif algorithm = "g":
+    elif algorithm == "g":
         greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
     # elif algorithm = "":
 
