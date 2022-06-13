@@ -16,6 +16,6 @@ class Graph():
         
             for row in reader:
                 all_stations[row['station']] = Station(row['station'], row['x'], row['y'])
-
+        print(all_stations)
         return all_stations
 

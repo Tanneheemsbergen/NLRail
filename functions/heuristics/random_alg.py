@@ -1,5 +1,6 @@
 import random
 from functions.calculation import calculate_quality
+from functions.plot import plot
 def random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
     check_connections_left = all_connections.copy()
@@ -38,6 +39,7 @@ def random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 station = next_station[0]
 
         total_time_traject += total_time
+        print(total_time)
 
         trajects.append(traject)
 
@@ -47,3 +49,4 @@ def random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     connections_used = len(all_connections) - len(check_connections_left)
 
     print(calculate_quality(connections_used, len(all_connections),total_time_traject,MAX_AMOUNT_TRAJECTS))
+    #plot()
