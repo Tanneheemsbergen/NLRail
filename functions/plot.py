@@ -1,11 +1,21 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from classes.graph_class import Graph
 
-stations = pd.read_csv("csvfiles/StationsHolland.csv")
-print(stations["x"][0])
-plt.xlabel("X-Coordinate")
-plt.ylabel("Y-Coordinate")
-plt.scatter(stations["x"], stations["y"])
-plt.plot([stations["x"][0],stations["x"][1]], [stations["y"][0], stations["y"][1]])
+def plot_function():
+    stations = pd.read_csv("csvfiles/StationsHolland.csv")
+    print(stations["x"][0])
+    plt.xlabel("X-Coordinate")
+    plt.ylabel("Y-Coordinate")
+    plt.scatter(stations["x"], stations["y"])
 
-plt.savefig("testplot.png")
+    x_coordinates = []
+    y_coordinates = []
+
+    for traject in trajects:
+        for station in stations:
+            x_coordinates.append(station.x)
+            y_coordinates.append(station.y)
+        plt.plot(x_coordinates, y_coordinates)
+
+    plt.savefig("test.png")

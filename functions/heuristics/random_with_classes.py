@@ -1,8 +1,9 @@
 import random
 import copy
 from functions.calculation import calculate_quality
+from functions.plot import plot_function
 def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
-    
+
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []
@@ -24,7 +25,7 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             total_time += int(copy_connections[station].time[next_station])
             if total_time + int(copy_connections[station].time[next_station]) <= MAX_TIME:
                 traject.append(next_station)
-            
+
                 # print(f" time: {copy_connections[station].time}")
                 # print(f" time: {copy_connections[station].time[next_station]}")
                 # print(f"connecties before pop: {copy_connections[station].time.keys()}")
@@ -33,8 +34,8 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 # print(f"next connecties before pop: {copy_connections[next_station].time.keys()}")
                 copy_connections[next_station].time.pop(station)
                 # print(f"netx connecties after pop: {copy_connections[next_station].time.keys()}")
-    
-         
+
+
                 if next_station in list(check_connections_left[station].time.keys()):
                     check_connections_left[station].time.pop(next_station)
                 if station in list(check_connections_left[next_station].time.keys()):

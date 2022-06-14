@@ -1,12 +1,14 @@
 from functions.heuristics.random_alg import random_function
 from functions.heuristics.random_greedy import greedy_function
-from functions.classes.graph_class import Graph
+# from functions.classes.graph_class import Graph
+#from classes.graph_class import Graph
 import argparse
 #from functions.visualisation import visualisation
 
 def main (input_file_name, algorithm):
     # Open de input document and create an empty list for connections
-    with open(f"csvfiles/{input_file_name}.csv") as f:
+    input_file = f"csvfiles/{input_file_name}.csv"
+    with open(input_file) as f:
         connecties = f.readlines()
     all_connections = []
 
@@ -35,9 +37,9 @@ def main (input_file_name, algorithm):
     # Visualization
     #Graph("csvfiles/ConnectiesHolland.csv")
     #visualisation(traject, all_stations)
-    from classes.graph_class import Graph
-    test_graph = Graph("csvfiles/StationsHolland.csv")
-    print(random_function_classes(test_graph, 7, 120))
+    # from classes.graph_class import Graph
+    # test_graph = Graph("csvfiles/StationsHolland.csv")
+    # print(random_function_classes(test_graph, 7, 120))
 
 if __name__ == "__main__":
     # Set-up parsing command line arguments
