@@ -6,6 +6,7 @@ def greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     trajects = []
     total_time_traject = 0
     quality = 0
+    besttraject = []
 
     for i in range(MAX_AMOUNT_TRAJECTS):
         copy_connecties = all_connections.copy()
@@ -39,14 +40,14 @@ def greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 station = next_station[0]
         connections_used = len(all_connections) - len(check_connections_left)
         total_time_traject += total_time
-        trajects.append(traject)
         new_quality = calculate_quality(connections_used, len(all_connections),total_time_traject,MAX_AMOUNT_TRAJECTS)
-        # if new_quality > quality and len(trajects) == 0:
-        #     trajects.append(traject)
-        #     quality = new_quality
-        if new_quality > quality:
-            trajects.remove(traject)
+        if new_quality > quality and len(trajects) == 0:
+            trajects.append(traject)
             quality = new_quality
+        elif new_quality > quality and len(trajects) != 0:
+            quality = new_quality
+            besttraject = traject
+    trajects.append(besttraject)
     print(trajects)
     print(f"total time of all trajects: {total_time_traject}")
     print(f"connections not used {check_connections_left}")

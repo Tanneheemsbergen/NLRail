@@ -22,6 +22,13 @@ class Station(object):
 
         return connection_time
 
+    def location(self):
+        locations = {
+            "Name": "station",
+            "lat": "x",
+            "lon": "y"
+        }
+        return locations
 
     def __repr__(self):
         """
