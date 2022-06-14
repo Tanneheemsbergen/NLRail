@@ -1,6 +1,8 @@
 import random
 import copy
 from functions.calculation import calculate_quality
+
+
 def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     
     all_connections = graph.all_stations

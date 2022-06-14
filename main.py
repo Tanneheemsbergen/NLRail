@@ -1,4 +1,5 @@
 from functions.heuristics.random_alg import random_function
+from functions.heuristics.random_with_classes import random_function_classes
 #from classes.graph_class import Graph
 import argparse
 #from functions.visualisation import visualisation
@@ -29,7 +30,7 @@ def main (input_file_name, algorithm):
 
     # Determine which algorithm to use based on the user input
     if algorithm == "r":
-        random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+        check_connections_left = random_function_classes(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
     elif algorithm == "g":
         greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
     # elif algorithm = "":
@@ -40,7 +41,7 @@ def main (input_file_name, algorithm):
     # from classes.graph_class import Graph
     # test_graph = Graph("csvfiles/StationsHolland.csv")
     # print(random_function_classes(test_graph, 7, 120))
-    plotting(stations_input, connections_input)
+    plotting(stations_input, connections_input, check_connections_left)
 
 if __name__ == "__main__":
     # Set-up parsing command line arguments
