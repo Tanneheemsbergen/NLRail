@@ -55,5 +55,5 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     amount_of_connections = total_connections - connections_left
     quality = calculate_quality(amount_of_connections, total_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
   
-    visualisation(graph, trajects, 'random_visualisation.png')
+    #visualisation(graph, trajects, 'random_visualisation.png')
     return quality

@@ -1,6 +1,7 @@
 
 from functions.heuristics.random_with_classes import random_function_classes
 from visualisation import visualisation, barplot
+#from functions.normal_distribution import barplot
 from functions.classes.graph_class import Graph
 import argparse
 
@@ -21,6 +22,7 @@ def main (input_file_name, algorithm, iteration):
     results = []
     # Determine which algorithm to use based on the user input
     for i in range(iteration):
+        print(i)
         if algorithm == "r":
             result = random_function_classes(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
@@ -28,7 +30,8 @@ def main (input_file_name, algorithm, iteration):
         # elif algorithm == "g":
         #     greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
 
-    barplot(results)
+    if iteration > 1:
+        barplot(results)
 
 if __name__ == "__main__":
     # Set-up parsing command line arguments
