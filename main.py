@@ -1,6 +1,7 @@
 
 from functions.heuristics.random_with_classes import random_function_classes
 from visualisation import visualisation, barplot
+#from functions.normal_distribution import barplot
 from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
 import argparse
@@ -25,6 +26,7 @@ def main (input_file_name, algorithm, iteration):
     results = []
     # Determine which algorithm to use based on the user input
     for i in range(iteration):
+        print(i)
         if algorithm == "r":
             result = random_function_classes(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
