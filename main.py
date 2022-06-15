@@ -71,8 +71,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Run main with provide arguments
-<<<<<<< HEAD
     main(args.Area, args.Heuristics, args.Iterations)
-=======
-    main(args.Area, args.Heuristics)
->>>>>>> 47c0623a0c522c32d9fffed8b13197ce8ccd3dc4
+
