@@ -1,13 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import norm 
+# from scipy.stats import norm
 import statistics
 
 #from Collections import sort
 
 from functions.classes.graph_class import Graph
 
-<<<<<<< HEAD
 def visualisation(station_inputs, connections_input, check_connections_left):
 
     stations = Graph(station_inputs).all_stations
@@ -57,34 +56,33 @@ def barplot(results):
     # Calculating mean and standard deviation
     mean = statistics.mean(x_axis)
     sd = statistics.stdev(x_axis)
-    
+
     plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
     plt.savefig("barplot.png")
     #plt.show()
     #print(results)
-    # x-coordinates of left sides of bars 
+    # x-coordinates of left sides of bars
 #left = len(results)
-    
+
     # heights of bars
     #height = results
-    
+
     # labels for bars
     #tick_label = ['one', 'two', 'three', 'four', 'five']
-    
+
     # # plotting a bar chart
     # plt.bar(left, height, width = 0.1, align="center", color = ['black'])
-    
+
     # # naming the x-axis
     # plt.xlabel('x - axis')
     # # naming the y-axis
     # plt.ylabel('y - axis')
     # # plot title
     # plt.title('My bar chart!')
-    
+
     # # function to show the plot
     # #plt.show()
     # plt.savefig("barplot.png")
-=======
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
     plt.rcParams["figure.autolayout"] = True
@@ -108,11 +106,11 @@ def visualisation(graph, trajects, filename):
         for connection in connections:
             index_destination = name_stations.index(connection)
             plt.plot([y[index_first_station], y[index_destination]],[x[index_first_station], x[index_destination]], 'b', alpha=0.1)
-    
+
 
     colors = ['g', 'r', 'c', 'm', 'y', 'k', 'w']
-    
-    i = 0 
+
+    i = 0
     linewidth=1
     for traject in trajects:
         color = colors[i]
@@ -134,5 +132,3 @@ def visualisation(graph, trajects, filename):
 
 
     plt.savefig(filename)
-
->>>>>>> 47c0623a0c522c32d9fffed8b13197ce8ccd3dc4

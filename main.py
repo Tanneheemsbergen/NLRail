@@ -1,22 +1,15 @@
 from functions.heuristics.random_alg import random_function
-<<<<<<< HEAD
 from functions.heuristics.random_greedy import greedy_function
 # from functions.classes.graph_class import Graph
 #from classes.graph_class import Graph
-=======
+
 from functions.heuristics.random_with_classes import random_function_classes
 from visualisation import visualisation, barplot
 from functions.classes.graph_class import Graph
->>>>>>> 29630d8350960495e66a12e1f114df0ad02eb9cf
 import argparse
 #from functions.visualisation import visualisation
 #from functions.plot import plotting
-
-<<<<<<< HEAD
-def main (input_file_name, algorithm):
-=======
-def main (input_file_name, algorithm, iteration):  
->>>>>>> 29630d8350960495e66a12e1f114df0ad02eb9cf
+def main (input_file_name, algorithm, iteration):
     # Open de input document and create an empty list for connections
     stations_input = f"csvfiles/Stations{input_file_name}.csv"
     station_graph = Graph(stations_input)
@@ -50,14 +43,14 @@ def main (input_file_name, algorithm, iteration):
             #return results
             #print(result)
             #print(results)
-            
+
         elif algorithm == "g":
             greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
     # elif algorithm = "":
     #print("GOEIE")
     #print(f"Results: {results}")
     print(len(results))
-    
+
 
     barplot(results)
     # Visualization
@@ -81,8 +74,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Run main with provide arguments
-<<<<<<< HEAD
     main(args.Area, args.Heuristics, args.Iterations)
-=======
     main(args.Area, args.Heuristics)
->>>>>>> 47c0623a0c522c32d9fffed8b13197ce8ccd3dc4
