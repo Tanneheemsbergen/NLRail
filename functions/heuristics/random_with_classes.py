@@ -1,7 +1,9 @@
 import random
 import copy
 from functions.calculation import calculate_quality
+#from graph_class import Graph
 from visualisation import visualisation
+
 def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)

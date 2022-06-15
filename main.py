@@ -1,7 +1,11 @@
-from functions.heuristics.random_alg import random_function
+#from functions.heuristics.random_alg import random_function
+from functions.heuristics.random_greedy import greedy_function
+# from functions.classes.graph_class import Graph
+#from classes.graph_class import Graph
 from functions.heuristics.random_with_classes import random_function_classes
 from visualisation import visualisation, barplot
 from functions.classes.graph_class import Graph
+
 import argparse
 #from functions.visualisation import visualisation
 #from functions.plot import plotting
