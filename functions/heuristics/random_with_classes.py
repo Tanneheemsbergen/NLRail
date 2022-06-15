@@ -1,9 +1,10 @@
 import random
 import copy
 from functions.calculation import calculate_quality
+from visualisation import visualisation
 def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
-    
     all_connections = graph.all_stations
+    total_connections = len(all_connections)
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []
     total_time_traject = 0
@@ -46,6 +47,9 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     connections_left = 0
     for i in check_connections_left:
         connections_left += len(check_connections_left[i].time)
-    print(connections_left)
 
-    return check_connections_left
+    amount_of_connections = total_connections - connections_left
+    quality = calculate_quality(amount_of_connections, total_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
+  
+    visualisation(graph, trajects, 'random_visualisation.png')
+    return quality
