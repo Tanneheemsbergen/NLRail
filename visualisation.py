@@ -4,7 +4,6 @@ from scipy.stats import norm
 import statistics
 
 from functions.classes.graph_class import Graph
-
 def barplot(results):
 
     x_axis = sorted(results, reverse=True)
@@ -16,7 +15,7 @@ def barplot(results):
     
     plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
     plt.savefig("barplot.png")
-
+    
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
     plt.rcParams["figure.autolayout"] = True
@@ -45,7 +44,7 @@ def visualisation(graph, trajects, filename):
     colors = ['g', 'r', 'c', 'm', 'y', 'k', 'w']
     
     i = 0 
-    linewidth=1
+    linewidth=10
     for traject in trajects:
         color = colors[i]
         for station in range(len(traject) - 1):
@@ -56,7 +55,7 @@ def visualisation(graph, trajects, filename):
             i = 0
         else:
             i += 1
-        linewidth += 2
+        linewidth -= 2
 
 
     plt.axis([4.2, 5.2, 51.2, 53.2])
