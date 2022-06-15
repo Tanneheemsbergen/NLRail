@@ -6,6 +6,7 @@ class Station(object):
         self.name = name
         self.xcoordinate = xcoordinate
         self.ycoordinate = ycoordinate
+       # self.source_file = source_file
         self.time = self.load_connection_time()
 
     def load_connection_time(self):
@@ -14,8 +15,7 @@ class Station(object):
             reader = csv.DictReader(in_file)
           
             for row in reader:
-                if row['station1'] == self.name:
-    
+                if row['station1'] == self.name:    
                     connection_time[row['station2']] = row['distance']
                 elif row['station2'] == self.name:
                     connection_time[row['station1']] = row['distance']

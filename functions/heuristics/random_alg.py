@@ -1,6 +1,6 @@
 import random
 from functions.calculation import calculate_quality
-from functions.plot import plotting
+#from functions.plot import plotting
 def random_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
     check_connections_left = all_connections.copy()
