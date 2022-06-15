@@ -2,11 +2,11 @@ import csv
 from .station_class import Station
 
 class Graph():
-    def __init__(self, source_file):
-        self.all_stations = self.load_nodes(source_file)
+    def __init__(self, source_file, source_file_connections):
+        self.all_stations = self.load_nodes(source_file, source_file_connections)
 
 
-    def load_nodes(self, source_file):
+    def load_nodes(self, source_file, source_file_connections):
         """
         Load all the nodes into the graph.
         """
@@ -15,5 +15,6 @@ class Graph():
             reader = csv.DictReader(in_file)
 
             for row in reader:
-                all_stations[row['station']] = Station(row['station'], row['x'], row['y'])
+                all_stations[row['station']] = Station(row['station'], row['x'], row['y'], source_file_connections)
+
         return all_stations
