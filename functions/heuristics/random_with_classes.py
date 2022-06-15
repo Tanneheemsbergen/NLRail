@@ -48,6 +48,13 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     connections_left = 0
     for i in check_connections_left:
         connections_left += len(check_connections_left[i].time)
-    print(connections_left)
-
-    return check_connections_left
+    print(f"Connections left:{connections_left}")
+    print(len(all_connections))
+   # print(connections_left)
+    #print(f"connections: {len(all_connections)}")
+    result = calculate_quality((28 - (connections_left/2)), 28, total_time_traject, MAX_AMOUNT_TRAJECTS)
+    if result < -500:
+        breakpoint()
+    # resultt = dat hierboven
+    # Connections_left is voor 7 trajecten 
+    return result 
