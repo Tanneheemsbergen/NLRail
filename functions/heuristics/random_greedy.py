@@ -6,7 +6,8 @@ def greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     trajects = []
     total_time_traject = 0
     quality = 0
-    besttraject = []
+    besttrajects = []
+    start_station = ["Den Helder, Dordrecht"]
 
     for i in range(MAX_AMOUNT_TRAJECTS):
         copy_connecties = all_connections.copy()
@@ -16,7 +17,7 @@ def greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         station = random.choices([randomconnection[0],randomconnection[1]], k=1)[0]
         traject.append(station)
 
-        while  total_time < MAX_TIME:
+        while total_time < MAX_TIME:
             options_next_station = []
             for i in copy_connecties:
                 if i[0] == station or i[1] == station:
@@ -40,14 +41,32 @@ def greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 station = next_station[0]
         connections_used = len(all_connections) - len(check_connections_left)
         total_time_traject += total_time
+        trajects.append(traject)
         new_quality = calculate_quality(connections_used, len(all_connections),total_time_traject,MAX_AMOUNT_TRAJECTS)
-        if new_quality > quality and len(trajects) == 0:
-            trajects.append(traject)
-            quality = new_quality
-        elif new_quality > quality and len(trajects) != 0:
+        print(new_quality)
+        if new_quality >= quality and len(besttrajects) == 0:
+             quality = new_quality
+             besttraject = traject
+             besttrajects.append(besttraject)
+        elif new_quality >= quality and len(besttrajects) != 0:
+            besttrajects.remove(besttraject)
             quality = new_quality
             besttraject = traject
-    trajects.append(besttraject)
+            besttrajects.append(besttraject)
+        elif new_quality < quality:
+             trajects.remove(traject)
+             new_quality = quality
+        # elif new_quality >= quality and len(trajects) != 0:
+        #     trajects.remove(traject)
+        #     quality = new_quality
+        #     besttraject = traject
+        #     besttrajects.append(besttraject)
+        #     if len(besttrajects) == 0:
+        #         besttraject = traject
+        #     elif len(besttrajects) != 0:
+        #         besttrajects.remove(besttraject)
+        #         besttrajects.append(besttraject)
+    print(besttrajects)
     print(trajects)
     print(f"total time of all trajects: {total_time_traject}")
     print(f"connections not used {check_connections_left}")
