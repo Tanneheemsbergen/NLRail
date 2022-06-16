@@ -15,9 +15,13 @@ def barplot(results):
     mean = statistics.mean(x_axis)
     sd = statistics.stdev(x_axis)
     
+
     plt.figure(0)
-    plt.axis([2500, 10000, 0, 0.0005])
-    #plt.text(mean: , x, s)
+    plt.xlabel("Probabilty Density")
+    plt.ylabel("K-value")
+    #plt.axis([2500, 10000, 0, 0.0005])
+    plt.grid()
+    #plt.text(, 0.007, "mean, sd")
     plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
     
     plt.savefig("NormalDistribution.png")
