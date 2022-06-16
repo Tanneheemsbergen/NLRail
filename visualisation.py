@@ -15,7 +15,7 @@ def barplot(results):
     mean = statistics.mean(x_axis)
     sd = statistics.stdev(x_axis)
     
-    plot1 = plt.figure(0)
+    plt.figure(0)
     plt.axis([2500, 10000, 0, 0.0005])
     #plt.text(mean: , x, s)
     plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
@@ -37,7 +37,7 @@ def visualisation(graph, trajects, filename):
     plt.xlabel("y-Coordinate")
     plt.ylabel("X-Coordinate")
 
-    plot2 = plt.figure(1)
+    plt.figure(1)
     plt.plot(y, x, 'r*')
     plt.axis([4.2, 5.2, 51.2, 53.2])
 
@@ -65,12 +65,8 @@ def visualisation(graph, trajects, filename):
             i += 1
         linewidth -= 2
 
-
-    
-
     for y, x, s in zip(y, x, name_stations):
         plt.text(y, x, s)
-
 
     plt.savefig(filename)
 
