@@ -77,12 +77,8 @@ def visualisation(graph, trajects, filename):
             i += 1
         linewidth -= 2
 
-
-    
-
     for y, x, s in zip(y, x, name_stations):
         plt.text(y, x, s)
-
 
     plt.savefig(filename)
 

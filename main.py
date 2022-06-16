@@ -22,7 +22,7 @@ def main (input_file_name, algorithm, iteration):
         MAX_AMOUNT_TRAJECTS = 20
         MAX_TIME = 180
     
-    print(greedy_time(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME))
+    # print(greedy_time(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME))
     results = []
     # Determine which algorithm to use based on the user input
     for i in range(iteration):
