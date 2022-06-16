@@ -23,8 +23,9 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             else:
                 break
 
-            total_time += copy_connections[station].time[next_station]
+            
             if (total_time + copy_connections[station].time[next_station]) <= MAX_TIME:
+                total_time += copy_connections[station].time[next_station]
                 traject.append(next_station)
 
                 copy_connections[station].time.pop(next_station)
@@ -36,6 +37,8 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                     check_connections_left[next_station].time.pop(station)
                        
                 station = next_station
+            else:
+                break
            
         trajects.append(traject)
         total_time_traject += total_time
