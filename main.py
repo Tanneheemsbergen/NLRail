@@ -4,6 +4,7 @@ from visualisation import visualisation, normal_distribution, histogram
 #from functions.normal_distribution import barplot
 from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
+from functions.heuristics.depth_first import depthfirst
 import argparse
 
 def main (input_file_name, algorithm, iteration):  
@@ -35,6 +36,21 @@ def main (input_file_name, algorithm, iteration):
 
     if iteration > 1:
         histogram(results)
+    depthfirst(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+    # print(f" greedy: {greedy_time(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)}")
+    # print(f" random: {random_function_classes(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)}")
+    # results = []
+    # # Determine which algorithm to use based on the user input
+    # for i in range(iteration):
+    #     print(i)
+    #     if algorithm == "r":
+    #         result = random_function_classes(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+    #         results.append(result)
+     
+    #     # elif algorithm == "g":
+    #     #     greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+    # if iteration > 1:
+    #     barplot(results)
 
 if __name__ == "__main__":
     # Set-up parsing command line arguments
