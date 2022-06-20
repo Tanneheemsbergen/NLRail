@@ -24,7 +24,6 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 break
 
             if (total_time + copy_connections[station].time[next_station]) <= MAX_TIME:
-                print('test')
                 traject.append(next_station)
                 total_time += copy_connections[station].time[next_station]
                 copy_connections[station].time.pop(next_station)
@@ -55,17 +54,19 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
     amount_of_connections = total_connections - connections_left
     quality = calculate_quality(amount_of_connections, total_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
+    if quality > 8700:
+        print(trajects)
+    # with open('output.csv', 'w') as file:
+    #     writer = csv.writer(file)
+    #     header = ['train', 'stations']
+    #     writer.writerow(header)
+    #     i = 1
+    #     for traject in trajects:
+    #         data = [f"train_{i}", ('[%s]' % ', '.join(map(str, traject)))]
+    #         i += 1
+    #         writer.writerow(data)
+    #     writer.writerow(['score', quality])
 
-    with open('output.csv', 'w') as file:
-        writer = csv.writer(file)
-        header = ['train', 'stations']
-        writer.writerow(header)
-        i = 1
-        for traject in trajects:
-            data = [f"train_{i}", ('[%s]' % ', '.join(map(str, traject)))]
-            i += 1
-            writer.writerow(data)
-        writer.writerow(['score', quality])
-
-    #visualisation(graph, trajects, 'random_visualisation.png')
+    visualisation(graph, trajects, 'RANDOMHOLLAND.png')
+    
     return quality

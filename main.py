@@ -1,6 +1,6 @@
 
 from functions.heuristics.random_with_classes import random_function_classes
-from visualisation import visualisation, barplot
+from visualisation import visualisation, normal_distribution, histogram
 #from functions.normal_distribution import barplot
 from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
@@ -12,7 +12,6 @@ def main (input_file_name, algorithm, iteration):
     stations_input = f"csvfiles/Stations{input_file_name}.csv"
     connections_input = f"csvfiles/Connecties{input_file_name}.csv"
     station_graph = Graph(stations_input, connections_input)
-
     
     # Determine the maximum amount of trajects and time, based on the user input
     if input_file_name == "Holland":
@@ -22,7 +21,6 @@ def main (input_file_name, algorithm, iteration):
         MAX_AMOUNT_TRAJECTS = 20
         MAX_TIME = 180
     
-    # print(greedy_time(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME))
     results = []
     # Determine which algorithm to use based on the user input
     for i in range(iteration):
@@ -30,11 +28,13 @@ def main (input_file_name, algorithm, iteration):
         if algorithm == "r":
             result = random_function_classes(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
-     
-        # elif algorithm == "g":
-        #     greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+        elif algorithm == "g":
+            result = greedy_time(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            results.append(result)
+            
+
     if iteration > 1:
-        barplot(results)
+        histogram(results)
 
 if __name__ == "__main__":
     # Set-up parsing command line arguments

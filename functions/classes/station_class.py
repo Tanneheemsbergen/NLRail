@@ -15,9 +15,9 @@ class Station(object):
           
             for row in reader:
                 if row['station1'] == self.name:    
-                    connection_time[row['station2']] = int(row['distance'])
+                    connection_time[row['station2']] = float(row['distance'])
                 elif row['station2'] == self.name:
-                    connection_time[row['station1']] = int(row['distance'])
+                    connection_time[row['station1']] = float(row['distance'])
 
         return connection_time
 

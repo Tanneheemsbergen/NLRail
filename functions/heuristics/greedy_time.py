@@ -55,7 +55,7 @@ def greedy_time(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
     amount_of_connections = total_connections - connections_left
     quality = calculate_quality(amount_of_connections, total_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
-  
-    visualisation(graph, trajects, 'greedy_time_visualisation.png')
-    print(trajects)
+    print(quality)
+    #visualisation(graph, trajects, 'GREEDY-NATIONAAL.png')
+    #print(trajects)
     return quality
