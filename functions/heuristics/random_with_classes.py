@@ -15,16 +15,18 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         traject = []
         total_time = 0
         station = random.choices(list(all_connections.keys()), k=1)[0]
+    
         traject.append(station)
         while total_time < MAX_TIME:
 
             if len(list(copy_connections[station].time.keys())) > 0:
                 next_station = random.choices(list(copy_connections[station].time.keys()), k=1)[0]
+                if len(copy_connections[next_station].time.keys()) == 0 and len(list(copy_connections[station].time.keys())) > 1:
+                    next_station = random.choices(list(copy_connections[station].time.keys()), k=1)[0]
             else:
                 break
 
             if (total_time + copy_connections[station].time[next_station]) <= MAX_TIME:
-                print('test')
                 traject.append(next_station)
                 total_time += copy_connections[station].time[next_station]
                 copy_connections[station].time.pop(next_station)
@@ -34,7 +36,7 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                         
                 if station in list(check_connections_left[next_station].time.keys()):
                     check_connections_left[next_station].time.pop(station)
-                       
+         
                 station = next_station
             else:
                 break

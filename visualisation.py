@@ -8,7 +8,8 @@ def barplot(results):
     plt.rcParams["figure.figsize"] = [10, 10]
     plt.rcParams["figure.autolayout"] = True
 
-    x_axis = sorted(results, reverse=True)
+    x_axis = sorted(results)
+    iterations = len(x_axis)
     print(f"ordered!{x_axis}")
 
     # Calculating mean and standard deviation
@@ -17,14 +18,21 @@ def barplot(results):
     
 
     plt.figure(0)
-    plt.xlabel("Probabilty Density")
-    plt.ylabel("K-value")
-    #plt.axis([2500, 10000, 0, 0.0005])
+    plt.xticks(fontsize=15)
+    plt.yticks(fontsize=15)
+    plt.ylabel("Probabilty Density", fontsize=18)
+    plt.xlabel("K-value", fontsize=18)
+    plt.title(f"Normal distribution of {iterations} iterations", fontsize=24)
+
+    x = x_axis[0]
+   
+    
     plt.grid()
-    #plt.text(, 0.007, "mean, sd")
+    plt.text(x, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
+    plt.tight_layout()
     plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
     
-    plt.savefig("NormalDistribution.png")
+    plt.savefig("NormalDistribution1000.png")
 
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
@@ -63,7 +71,7 @@ def visualisation(graph, trajects, filename):
             index_first_station = name_stations.index(traject[station])
             index_next_station =  name_stations.index(traject[station + 1])
             plt.plot([y[index_first_station], y[index_next_station]],[x[index_first_station], x[index_next_station]], color,linewidth=linewidth, alpha=0.3)
-        if i > 6:
+        if i > 5:
             i = 0
         else:
             i += 1
