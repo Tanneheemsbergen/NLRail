@@ -1,6 +1,6 @@
 
 from functions.heuristics.random_with_classes import random_function_classes
-from visualisation import visualisation, histogram
+from visualisation import histogram
 from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
 from functions.heuristics.depth_first import depthfirst
