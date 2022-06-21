@@ -1,9 +1,9 @@
 from functions.heuristics.random_with_classes import random_function_classes
 from visualisation import visualisation, barplot
+#from functions.normal_distribution import barplot
 from functions.classes.graph_class import Graph
 from functions.heuristics.hillclimber import hillclimber_classes
 import argparse
-
 
 def main (input_file_name, algorithm, iteration):
     # Open de input document and create an empty list for connections
@@ -22,6 +22,7 @@ def main (input_file_name, algorithm, iteration):
     results = []
     # Determine which algorithm to use based on the user input
     for i in range(iteration):
+        print(i)
         if algorithm == "r":
             result = random_function_classes(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
@@ -30,7 +31,8 @@ def main (input_file_name, algorithm, iteration):
             result = hillclimber_classes(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
 
-    barplot(results)
+    if iteration > 1:
+        barplot(results)
 
 if __name__ == "__main__":
     # Set-up parsing command line arguments

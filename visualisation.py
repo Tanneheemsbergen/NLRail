@@ -6,16 +6,22 @@ import statistics
 from functions.classes.graph_class import Graph
 
 def barplot(results):
+    plt.rcParams["figure.figsize"] = [10, 10]
+    plt.rcParams["figure.autolayout"] = True
 
     x_axis = sorted(results, reverse=True)
-    print(x_axis)
+    print(f"ordered!{x_axis}")
 
     # Calculating mean and standard deviation
     mean = statistics.mean(x_axis)
     sd = statistics.stdev(x_axis)
 
+    plot1 = plt.figure(0)
+    plt.axis([2500, 10000, 0, 0.0005])
+    #plt.text(mean: , x, s)
     plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
-    plt.savefig("barplot.png")
+
+    plt.savefig("NormalDistribution.png")
 
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
@@ -32,7 +38,9 @@ def visualisation(graph, trajects, filename):
     plt.xlabel("y-Coordinate")
     plt.ylabel("X-Coordinate")
 
+    plot2 = plt.figure(1)
     plt.plot(y, x, 'r*')
+    plt.axis([4.2, 5.2, 51.2, 53.2])
 
     for name in name_stations:
         connections = list(graph.all_stations[name].time.keys())
@@ -59,7 +67,7 @@ def visualisation(graph, trajects, filename):
         linewidth += 2
 
 
-    plt.axis([4.2, 5.2, 51.2, 53.2])
+
 
     for y, x, s in zip(y, x, name_stations):
         plt.text(y, x, s)
