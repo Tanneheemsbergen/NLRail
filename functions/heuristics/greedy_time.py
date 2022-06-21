@@ -3,7 +3,7 @@ import random
 from functions.calculation import calculate_quality
 from visualisation import visualisation
 
-def greedy_time(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+def greedy_time(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []
@@ -63,6 +63,8 @@ def greedy_time(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     amount_of_connections = total_connections - connections_left
     quality = calculate_quality(amount_of_connections, total_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
     print(quality)
-    #visualisation(graph, trajects, 'GREEDY-NATIONAAL.png')
+
+    if iteration == 1:
+        visualisation(graph, trajects, 'Greedy.png')
     #print(trajects)
     return quality
