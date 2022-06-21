@@ -41,40 +41,10 @@ def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 break
         total_time_traject += total_time
         trajects.append(traject)
-    total_connections = 0
-    for i in all_connections:
-        total_connections += len(all_connections[i].time)
-
-    total_connections = total_connections / 2
-
-    connections_left = 0
-    for i in check_connections_left:
-        connections_left += len(check_connections_left[i].time)
-
-    connections_left = connections_left / 2
-
-    amount_of_connections = total_connections - connections_left
-    quality = calculate_quality(amount_of_connections, total_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
-    if quality > 8700:
-        print(trajects)
-    # with open('output.csv', 'w') as file:
-    #     writer = csv.writer(file)
-    #     header = ['train', 'stations']
-    #     writer.writerow(header)
-    #     i = 1
-    #     for traject in trajects:
-    #         data = [f"train_{i}", ('[%s]' % ', '.join(map(str, traject)))]
-    #         i += 1
-    #         writer.writerow(data)
-    #     writer.writerow(['score', quality])
-
-    visualisation(graph, trajects, 'RANDOMHOLLAND.png')
-
-    return quality
 
     quality = values(all_connections, check_connections_left, total_time_traject, MAX_AMOUNT_TRAJECTS)
 
     if iteration == 1:
         visualisation(graph, trajects, 'Random.png')
 
-    return quality
+    return quality, trajects
