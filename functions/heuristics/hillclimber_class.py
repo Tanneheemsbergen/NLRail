@@ -7,6 +7,8 @@ class Hillclimber:
 
     def __init__(self, graph):
 
+        self.graph = graph
+
     def get_solution(self, graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
         all_connections = graph.all_stations

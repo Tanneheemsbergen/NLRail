@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm
 import statistics
-import datetime 
+import datetime
 
 from functions.classes.graph_class import Graph
 
@@ -12,19 +12,19 @@ def histogram(results):
     plt.rcParams["figure.autolayout"] = True
 
 
-    # Information 
+    # Information
     x = sorted(results)
     xmin = x[0]
     iterations = len(x)
 
     # Other informaiton
-    current_time = datetime.datetime.now() 
+    current_time = datetime.datetime.now()
     q25, q75 = np.percentile(x, [25, 75])
     bin_width = 2 * (q75 - q25) * len(x) ** (-1/3)
     bins = round((x[-1] - x[0]) / bin_width)
     mean = statistics.mean(x)
     sd = statistics.stdev(x)
-    
+
     # Figure information adn settings
     plt.grid()
     plt.hist(x, density=True, bins=bins, label="Data")
@@ -32,7 +32,6 @@ def histogram(results):
     plt.yticks(fontsize=15)
     plt.ylabel("Probabilty Density", fontsize=18)
     plt.xlabel("K-value", fontsize=18)
-<<<<<<< HEAD
     plt.title(f"Nationaal - Random Algorithm of {iterations} iterations", fontsize=24)
 # mn, mx = plt.xlim()
 # plt.xlim(mn, mx)
@@ -76,11 +75,9 @@ def normal_distribution(results):
     plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
 
     plt.savefig(f"NormalDistribution{iterations}.png")
-=======
     plt.title(f"Alorithm of {iterations} iterations - {current_time}", fontsize=24)
     plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
     plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
->>>>>>> 550fa99d6ec3c1177272a32e1304206f448ee77e
 
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
@@ -130,9 +127,5 @@ def visualisation(graph, trajects, filename):
     for y, x, s in zip(y, x, name_stations):
         plt.text(y, x, s, fontsize = 15)
 
-<<<<<<< HEAD
     plt.savefig(filename)
-=======
     plt.savefig(f"Result-pictures/{filename}")
-
->>>>>>> 550fa99d6ec3c1177272a32e1304206f448ee77e

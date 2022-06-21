@@ -41,8 +41,6 @@ def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 break
         total_time_traject += total_time
         trajects.append(traject)
-<<<<<<< HEAD
-
     total_connections = 0
     for i in all_connections:
         total_connections += len(all_connections[i].time)
@@ -73,12 +71,10 @@ def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     visualisation(graph, trajects, 'RANDOMHOLLAND.png')
 
     return quality
-=======
-    
+
     quality = values(all_connections, check_connections_left, total_time_traject, MAX_AMOUNT_TRAJECTS)
 
     if iteration == 1:
         visualisation(graph, trajects, 'Random.png')
-    
+
     return quality
->>>>>>> 550fa99d6ec3c1177272a32e1304206f448ee77e
