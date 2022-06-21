@@ -34,7 +34,6 @@ def main (input_file_name, algorithm, iteration):
         elif algorithm == "df":
             result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
-<<<<<<< HEAD
         elif algorithm == "h":
             result = Hillclimber()
             results.append(result)
@@ -58,7 +57,7 @@ def main (input_file_name, algorithm, iteration):
     # if iteration > 1:
     #     barplot(results)
 =======
-            
+
     if iteration > 1:
         histogram(results)
 
