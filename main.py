@@ -1,4 +1,3 @@
-
 from functions.heuristics.random_with_classes import random_function_classes
 from visualisation import histogram
 from functions.classes.graph_class import Graph
@@ -53,4 +52,3 @@ if __name__ == "__main__":
 
     # Run main with provide arguments
     main(args.Area, args.Heuristics, args.Iterations)
-
