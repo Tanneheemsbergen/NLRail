@@ -14,6 +14,7 @@ def hillclimber_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     for i in range(MAX_AMOUNT_TRAJECTS):
         copy_connections = copy.deepcopy(all_connections)
         traject = []
+        besttraject = []
         total_time = 0
         station = random.choices(list(all_connections.keys()), k=1)[0]
         traject.append(station)
@@ -24,54 +25,57 @@ def hillclimber_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             else:
                 break
 
-            total_time += int(copy_connections[station].time[next_station])
-            if total_time + int(copy_connections[station].time[next_station]) <= MAX_TIME:
+            if (total_time + copy_connections[station].time[next_station]) <= MAX_TIME:
                 traject.append(next_station)
-
+                total_time += copy_connections[station].time[next_station]
                 copy_connections[station].time.pop(next_station)
                 copy_connections[next_station].time.pop(station)
-
                 if next_station in list(check_connections_left[station].time.keys()):
                     check_connections_left[station].time.pop(next_station)
-
                 if station in list(check_connections_left[next_station].time.keys()):
                     check_connections_left[next_station].time.pop(station)
 
                 station = next_station
-
-        trajects.append(traject)
+            else:
+                break
         total_time_traject += total_time
+        trajects.append(traject)
+        print(traject)
+        total_connections = 0
+        for i in all_connections:
+            total_connections += len(all_connections[i].time)
 
-    total_connections = 0
-    for i in all_connections:
-        total_connections += len(all_connections[i].time)
+        total_connections = total_connections / 2
 
-    total_connections = total_connections / 2
+        connections_left = 0
 
-    connections_left = 0
+        for i in check_connections_left:
+            connections_left += len(check_connections_left[i].time)
 
-    for i in check_connections_left:
-        connections_left += len(check_connections_left[i].time)
+        connections_left = connections_left / 2
 
-    connections_left = connections_left / 2
-
-    amount_of_connections = total_connections - connections_left
+        amount_of_connections = total_connections - connections_left
+        total_time_traject += total_time
     new_quality = calculate_quality(amount_of_connections, total_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
-    if new_quality >= quality and len(besttrajects) == 0:
-         quality = new_quality
-         besttraject = traject
-         besttrajects.append(besttraject)
-    elif new_quality >= quality and len(besttrajects) != 0:
-        besttrajects.remove(besttraject)
+    # if new_quality >= quality and len(besttrajects) == 0:
+    #      quality = new_quality
+    #      traject = besttraject
+    #      besttrajects.append(besttraject)
+    if new_quality >= quality and len(trajects) != 0:
+        # trajects.remove(traject)
         quality = new_quality
-        besttraject = traject
-        besttrajects.append(besttraject)
+        # traject = besttraject
+        # besttrajects.append(besttraject)
     elif new_quality < quality:
          trajects.remove(traject)
-         new_quality = quality
-    print(besttrajects)
+         quality = new_quality
+    # print(traject)
+    # print(besttrajects)
+    print(trajects)
+    print(quality)
+    # print(traject)
     visualisation(graph, trajects, 'random_visualisation.png')
-    return quality
+return quality
 
     # print(new_quality)
     # if new_quality >= quality and len(besttrajects) == 0:
