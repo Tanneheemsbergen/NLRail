@@ -32,55 +32,9 @@ def histogram(results):
     plt.yticks(fontsize=15)
     plt.ylabel("Probabilty Density", fontsize=18)
     plt.xlabel("K-value", fontsize=18)
-<<<<<<< HEAD
-    plt.title(f"Nationaal - Random Algorithm of {iterations} iterations", fontsize=24)
-# mn, mx = plt.xlim()
-# plt.xlim(mn, mx)
-# kde_xs = np.linspace(mn, mx, 300)
-# kde = st.gaussian_kde(x)
-# plt.plot(kde_xs, kde.pdf(kde_xs), label="PDF")
-# plt.legend(loc="upper left")
-# plt.ylabel("Probability")
-# plt.xlabel("Data")
-# plt.title("Histogram");
-
-    plt.savefig(f"N-Histogram{iterations}Random.png")
-
-def normal_distribution(results):
-    plt.rcParams["figure.figsize"] = [10, 10]
-    plt.rcParams["figure.autolayout"] = True
-
-    x_axis = sorted(results)
-    iterations = len(x_axis)
-    print(f"ordered!{x_axis}")
-
-    # Calculating mean and standard deviation
-    mean = statistics.mean(x_axis)
-    sd = statistics.stdev(x_axis)
-
-
-    plt.figure(0)
-    plt.hist(results)
-    plt.xticks(fontsize=15)
-    plt.yticks(fontsize=15)
-    plt.ylabel("Probabilty Density", fontsize=18)
-    plt.xlabel("K-value", fontsize=18)
-    plt.title(f"Normal distribution of {iterations} iterations - Holland", fontsize=24)
-
-    x = x_axis[0]
-
-
-    plt.grid()
-    plt.text(x, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
-    plt.tight_layout()
-    plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
-
-    plt.savefig(f"NormalDistribution{iterations}.png")
-=======
     plt.title(f"Alorithm of {iterations} iterations - {current_time}", fontsize=24)
     plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
     plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
->>>>>>> 550fa99d6ec3c1177272a32e1304206f448ee77e
 
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
@@ -130,9 +84,5 @@ def visualisation(graph, trajects, filename):
     for y, x, s in zip(y, x, name_stations):
         plt.text(y, x, s, fontsize = 15)
 
-<<<<<<< HEAD
-    plt.savefig(filename)
-=======
     plt.savefig(f"Result-pictures/{filename}")
 
->>>>>>> 550fa99d6ec3c1177272a32e1304206f448ee77e
