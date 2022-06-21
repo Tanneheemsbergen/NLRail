@@ -2,37 +2,39 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm 
 import statistics
+import datetime 
 
 from functions.classes.graph_class import Graph
-def barplot(results):
+
+def histogram(results):
+    # Set figure base
     plt.rcParams["figure.figsize"] = [10, 10]
     plt.rcParams["figure.autolayout"] = True
 
-    x_axis = sorted(results)
-    iterations = len(x_axis)
-    print(f"ordered!{x_axis}")
 
-    # Calculating mean and standard deviation
-    mean = statistics.mean(x_axis)
-    sd = statistics.stdev(x_axis)
+    # Information 
+    x = sorted(results)
+    xmin = x[0]
+    iterations = len(x)
+
+    # Other informaiton
+    current_time = datetime.datetime.now() 
+    q25, q75 = np.percentile(x, [25, 75])
+    bin_width = 2 * (q75 - q25) * len(x) ** (-1/3)
+    bins = round((x[-1] - x[0]) / bin_width)
+    mean = statistics.mean(x)
+    sd = statistics.stdev(x)
     
-
-    plt.figure(0)
+    # Figure information adn settings
+    plt.grid()
+    plt.hist(x, density=True, bins=bins, label="Data")
     plt.xticks(fontsize=15)
     plt.yticks(fontsize=15)
     plt.ylabel("Probabilty Density", fontsize=18)
     plt.xlabel("K-value", fontsize=18)
-    plt.title(f"Normal distribution of {iterations} iterations", fontsize=24)
-
-    x = x_axis[0]
-   
-    
-    plt.grid()
-    plt.text(x, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
-    plt.tight_layout()
-    plt.plot(x_axis, norm.pdf(x_axis, mean, sd))
-    
-    plt.savefig("NormalDistribution1000.png")
+    plt.title(f"Alorithm of {iterations} iterations - {current_time}", fontsize=24)
+    plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
+    plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
 
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
@@ -46,12 +48,14 @@ def visualisation(graph, trajects, filename):
         y.append(float(graph.all_stations[station].ycoordinate))
         name_stations.append(graph.all_stations[station].name)
 
-    plt.xlabel("y-Coordinate")
-    plt.ylabel("X-Coordinate")
+    plt.xlabel("y-Coordinate", fontsize = 25)
+    plt.ylabel("X-Coordinate", fontsize = 25)
+    plt.xticks(fontsize=15)
+    plt.yticks(fontsize=15)
 
     plt.figure(1)
     plt.plot(y, x, 'r*')
-    plt.axis([4.2, 5.2, 51.2, 53.2])
+    plt.axis([min(y) - 0.2, max(y) + 0.2, min(x) - 0.2, max(x) + 0.2])
 
     for name in name_stations:
         connections = list(graph.all_stations[name].time.keys())
@@ -78,7 +82,7 @@ def visualisation(graph, trajects, filename):
         linewidth -= 2
 
     for y, x, s in zip(y, x, name_stations):
-        plt.text(y, x, s)
+        plt.text(y, x, s, fontsize = 15)
 
-    plt.savefig(filename)
+    plt.savefig(f"Result-pictures/{filename}")
 

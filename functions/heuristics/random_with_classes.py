@@ -4,7 +4,7 @@ import csv
 from functions.calculation import values
 from visualisation import visualisation
 
-def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []
@@ -44,16 +44,7 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     
     quality = values(all_connections, check_connections_left, total_time_traject, MAX_AMOUNT_TRAJECTS)
 
-    with open('output.csv', 'w') as file:
-        writer = csv.writer(file)
-        header = ['train', 'stations']
-        writer.writerow(header)
-        i = 1
-        for traject in trajects:
-            data = [f"train_{i}", ('[%s]' % ', '.join(map(str, traject)))]
-            i += 1
-            writer.writerow(data)
-        writer.writerow(['score', quality])
-
-    #visualisation(graph, trajects, 'random_visualisation.png')
+    if iteration == 1:
+        visualisation(graph, trajects, 'Random.png')
+    
     return quality

@@ -1,5 +1,5 @@
 from functions.heuristics.random_with_classes import random_function_classes
-# from visualisation import histogram
+from visualisation import visualisation, histogram
 from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
 from functions.heuristics.depth_first import depthfirst
@@ -31,11 +31,11 @@ def main (input_file_name, algorithm, iteration):
             result = greedy_time(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "df":
-            result = depthfirst(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
             
-    # if iteration > 1:
-    #     histogram(results)
+    if iteration > 1:
+        histogram(results)
 
 
 if __name__ == "__main__":

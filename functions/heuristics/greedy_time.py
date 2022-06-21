@@ -49,5 +49,4 @@ def greedy_time(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     if iteration == 1:
         visualisation(graph, trajects, 'greedy_time_visualisation.png')
 
-
     return quality
