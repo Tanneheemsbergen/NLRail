@@ -1,6 +1,5 @@
 from functions.heuristics.random_with_classes import random_function_classes
-from visualisation import visualisation, normal_distribution, histogram
-#from functions.normal_distribution import barplot
+from visualisation import histogram
 from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
 from functions.heuristics.depth_first import depthfirst
@@ -27,11 +26,15 @@ def main (input_file_name, algorithm, iteration):
     for i in range(iteration):
         print(i)
         if algorithm == "r":
-            result = random_function_classes(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            result = random_function_classes(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "g":
-            result = greedy_time(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            result = greedy_time(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
+        elif algorithm == "df":
+            result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            results.append(result)
+<<<<<<< HEAD
         elif algorithm == "h":
             result = Hillclimber()
             results.append(result)
@@ -54,6 +57,12 @@ def main (input_file_name, algorithm, iteration):
     #     #     greedy_function(all_connections, MAX_AMOUNT_TRAJECTS, MAX_TIME)
     # if iteration > 1:
     #     barplot(results)
+=======
+            
+    if iteration > 1:
+        histogram(results)
+
+>>>>>>> 550fa99d6ec3c1177272a32e1304206f448ee77e
 
 if __name__ == "__main__":
     # Set-up parsing command line arguments
@@ -61,7 +70,11 @@ if __name__ == "__main__":
 
     # Adding arguments
     parser.add_argument("Area", choices=["Holland", "Nationaal"], help="Connections in North - and South-Holland, or the entire Netherlands")
+<<<<<<< HEAD
     parser.add_argument("Heuristics", choices=["r", "g", "h"], help="1: Random, 2: Greedy, 3: Hillclimber")
+=======
+    parser.add_argument("Heuristics", choices=["r", "g", "df"], help="r: Random, g: Greedy, df: Depth-first")
+>>>>>>> 550fa99d6ec3c1177272a32e1304206f448ee77e
     parser.add_argument("Iterations", type=int, default=1000, help="The amount of iterations which the programm will be run, default is 1000")
 
     # Read arguments from command line

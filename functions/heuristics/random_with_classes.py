@@ -1,10 +1,10 @@
 import random
 import copy
 import csv
-from functions.calculation import calculate_quality
+from functions.calculation import values
 from visualisation import visualisation
 
-def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []
@@ -21,8 +21,7 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
             if len(list(copy_connections[station].time.keys())) > 0:
                 next_station = random.choices(list(copy_connections[station].time.keys()), k=1)[0]
-                if len(copy_connections[next_station].time.keys()) == 0 and len(list(copy_connections[station].time.keys())) > 1:
-                    next_station = random.choices(list(copy_connections[station].time.keys()), k=1)[0]
+
             else:
                 break
 
@@ -42,6 +41,7 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 break
         total_time_traject += total_time
         trajects.append(traject)
+<<<<<<< HEAD
 
     total_connections = 0
     for i in all_connections:
@@ -73,3 +73,12 @@ def random_function_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     visualisation(graph, trajects, 'RANDOMHOLLAND.png')
 
     return quality
+=======
+    
+    quality = values(all_connections, check_connections_left, total_time_traject, MAX_AMOUNT_TRAJECTS)
+
+    if iteration == 1:
+        visualisation(graph, trajects, 'Random.png')
+    
+    return quality
+>>>>>>> 550fa99d6ec3c1177272a32e1304206f448ee77e
