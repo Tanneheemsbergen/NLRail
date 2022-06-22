@@ -1,14 +1,13 @@
 import random
 import copy
 import csv
-from functions.calculation import values
+from functions.calculation import calculate_quality
 from visualisation import visualisation
 
 def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []
-    total_time_traject = 0
 
     for i in range(MAX_AMOUNT_TRAJECTS):
         copy_connections = copy.deepcopy(all_connections)
@@ -39,10 +38,10 @@ def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 station = next_station
             else:
                 break
-        total_time_traject += total_time
+
         trajects.append(traject)
     
-    quality = values(all_connections, check_connections_left, total_time_traject, MAX_AMOUNT_TRAJECTS)
+    quality = calculate_quality(trajects, graph, MAX_AMOUNT_TRAJECTS)
 
     if iteration == 1:
         visualisation(graph, trajects, 'Random.png')

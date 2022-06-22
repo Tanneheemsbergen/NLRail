@@ -2,10 +2,11 @@ from cmath import inf
 import random
 import copy
 import csv
-from functions.calculation import values
+from functions.calculation import calculate_quality
 from visualisation import visualisation
 
 def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+    value = -float('inf')
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []
@@ -82,8 +83,8 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             # Update the input graph with the best result found.
             # self.graph = self.best_solution
 
+    quality = calculate_quality(trajects, graph, MAX_AMOUNT_TRAJECTS)
 
-    quality = values(all_connections, check_connections_left, total_time_traject, MAX_AMOUNT_TRAJECTS)
-
+    print(trajects)
     print(quality)
 
