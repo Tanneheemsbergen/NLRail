@@ -38,8 +38,8 @@ def main (input_file_name, algorithm, iteration):
             results.append(result)
         elif algorithm == "hc":
             hc = Hillclimber(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            hc.run(250, station_graph, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=True)
-            print(hc.trajects)
+            hc.get_best_traject
+
 
     if iteration > 1:
         histogram(results)
