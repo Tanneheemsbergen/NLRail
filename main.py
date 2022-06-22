@@ -4,6 +4,7 @@ from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
 from functions.heuristics.depth_first import depthfirst
 from functions.heuristics.hillclimber_class import Hillclimber
+from functions.calculation import calculate_quality, values
 import argparse
 
 def main (input_file_name, algorithm, iteration):
@@ -35,8 +36,9 @@ def main (input_file_name, algorithm, iteration):
             result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "hc":
-            result = Hillclimber(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            print(result.trajects)
+            hc = Hillclimber(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc.run(250, verbose=True)
+            print(hc.trajects)
 
     if iteration > 1:
         histogram(results)
