@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import norm 
+from scipy.stats import norm
 import statistics
 import datetime 
 
@@ -64,11 +64,11 @@ def visualisation(graph, trajects, filename):
         for connection in connections:
             index_destination = name_stations.index(connection)
             plt.plot([y[index_first_station], y[index_destination]],[x[index_first_station], x[index_destination]], 'b', alpha=0.1)
-    
+
 
     colors = ['g', 'r', 'c', 'm', 'y', 'k', 'w']
-    
-    i = 0 
+
+    i = 0
     linewidth=10
     for traject in trajects:
         color = colors[i]
