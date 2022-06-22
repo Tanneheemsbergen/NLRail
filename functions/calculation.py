@@ -28,11 +28,12 @@ def calculate_quality(trajects, start_graph, T):
     total_time = calculate_total_time(all_connections, trajects)
     quality = formula_quality(amount_of_connections, total_connections, total_time, T)
     return quality
-            
+
 def calculate_total_time(all_connections, trajects):
     total_time = 0
     for traject in trajects:
         for i in range(len(traject)-1):
+            print(all_connections[traject[i]].time)
             total_time += all_connections[traject[i]].time[traject[i+1]]
     return(total_time)
 
@@ -44,7 +45,7 @@ def formula_quality(amount_of_connections, total_connections, total_time, T):
     T = amount of trajects
     Min = total amount of minutes
     """
-  
+
     p = amount_of_connections / total_connections
 
     K = p * 10000 - (T * 100 + total_time)

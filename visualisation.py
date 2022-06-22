@@ -32,12 +32,10 @@ def histogram(results):
     plt.yticks(fontsize=15)
     plt.ylabel("Probabilty Density", fontsize=18)
     plt.xlabel("K-value", fontsize=18)
-<<<<<<< HEAD
     plt.title(f"Holland - Random alorithm of {iterations} iterations", fontsize=24)# - {current_time}", fontsize=24)
     plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
     #plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
     plt.savefig(f"Result-pictures/Holland - Random algorithm of {iterations} iterations")
-=======
     # plt.title(f"Alorithm of {iterations} iterations - {current_time}", fontsize=24)
     plt.title(f"Holland - Random alorithm of {iterations} iterations", fontsize=24)
     # - {current_time}", fontsize=24)
@@ -46,7 +44,6 @@ def histogram(results):
     plt.savefig(f"Result-pictures/Holland - Random algorithm of {iterations} iterations")
     # plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
     # plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
->>>>>>> 543e33de5bd6fded18e8ddf0d377c11ef3914650
 
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
