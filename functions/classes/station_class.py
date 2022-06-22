@@ -1,5 +1,6 @@
 import csv
 
+
 class Station(object):
 
     def __init__(self, name, xcoordinate, ycoordinate, sourcefile):

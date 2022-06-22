@@ -1,17 +1,21 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import norm
+# from scipy.stats import norm
 import statistics
 import datetime
 
-from functions.classes.graph_class import Graph
+# from functions.classes.graph_class import Graph
 
-def histogram(results):
+
+def histogram(results, input_file_name, algorithm):
     # Set figure base
     plt.rcParams["figure.figsize"] = [10, 10]
     plt.rcParams["figure.autolayout"] = True
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> c70dbd690ec656eba63607f2c850e8ce6c1f1662
     # Information
     x = sorted(results)
     xmin = x[0]
@@ -25,15 +29,25 @@ def histogram(results):
     mean = statistics.mean(x)
     sd = statistics.stdev(x)
 
+<<<<<<< HEAD
+    # Figure information and settings
+=======
     # Figure information adn settings
+>>>>>>> c70dbd690ec656eba63607f2c850e8ce6c1f1662
     plt.grid()
     plt.hist(x, density=True, bins=bins, label="Data")
     plt.xticks(fontsize=15)
     plt.yticks(fontsize=15)
     plt.ylabel("Probabilty Density", fontsize=18)
     plt.xlabel("K-value", fontsize=18)
-    plt.title(f"Holland - Random alorithm of {iterations} iterations", fontsize=24)# - {current_time}", fontsize=24)
+
+    # Figure layout
+    plt.title(f"Result of {iterations} iterations in space: {input_file_name}, with algorithm: {algorithm}", fontsize=18)
     plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
+<<<<<<< HEAD
+    plt.savefig(f"Result-pictures/Histogram-{iterations}-{input_file_name}-{algorithm}.png")
+
+=======
     #plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
     plt.savefig(f"Result-pictures/Holland - Random algorithm of {iterations} iterations")
     # plt.title(f"Alorithm of {iterations} iterations - {current_time}", fontsize=24)
@@ -44,6 +58,7 @@ def histogram(results):
     plt.savefig(f"Result-pictures/Holland - Random algorithm of {iterations} iterations")
     # plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
     # plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
+>>>>>>> c70dbd690ec656eba63607f2c850e8ce6c1f1662
 
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
@@ -57,8 +72,8 @@ def visualisation(graph, trajects, filename):
         y.append(float(graph.all_stations[station].ycoordinate))
         name_stations.append(graph.all_stations[station].name)
 
-    plt.xlabel("y-Coordinate", fontsize = 25)
-    plt.ylabel("X-Coordinate", fontsize = 25)
+    plt.xlabel("y-Coordinate", fontsize=25)
+    plt.ylabel("X-Coordinate", fontsize=25)
     plt.xticks(fontsize=15)
     plt.yticks(fontsize=15)
 
@@ -71,19 +86,18 @@ def visualisation(graph, trajects, filename):
         index_first_station = name_stations.index(name)
         for connection in connections:
             index_destination = name_stations.index(connection)
-            plt.plot([y[index_first_station], y[index_destination]],[x[index_first_station], x[index_destination]], 'b', alpha=0.1)
-
+            plt.plot([y[index_first_station], y[index_destination]], [x[index_first_station], x[index_destination]], 'b', alpha=0.1)
 
     colors = ['g', 'r', 'c', 'm', 'y', 'k', 'w']
 
     i = 0
-    linewidth=10
+    linewidth = 10
     for traject in trajects:
         color = colors[i]
         for station in range(len(traject) - 1):
             index_first_station = name_stations.index(traject[station])
-            index_next_station =  name_stations.index(traject[station + 1])
-            plt.plot([y[index_first_station], y[index_next_station]],[x[index_first_station], x[index_next_station]], color,linewidth=linewidth, alpha=0.3)
+            index_next_station = name_stations.index(traject[station + 1])
+            plt.plot([y[index_first_station], y[index_next_station]], [x[index_first_station], x[index_next_station]], color, linewidth=linewidth, alpha=0.3)
         if i > 5:
             i = 0
         else:
@@ -91,6 +105,6 @@ def visualisation(graph, trajects, filename):
         linewidth -= 2
 
     for y, x, s in zip(y, x, name_stations):
-        plt.text(y, x, s, fontsize = 15)
+        plt.text(y, x, s, fontsize=15)
 
     plt.savefig(f"Result-pictures/{filename}")

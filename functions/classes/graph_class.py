@@ -1,10 +1,10 @@
 import csv
 from .station_class import Station
 
+
 class Graph():
     def __init__(self, source_file, source_file_connections):
         self.all_stations = self.load_nodes(source_file, source_file_connections)
-
 
     def load_nodes(self, source_file, source_file_connections):
         """

@@ -87,4 +87,6 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
     print(trajects)
     print(quality)
+    return(quality)
+    
 
