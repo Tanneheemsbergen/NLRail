@@ -1,13 +1,13 @@
 import copy
 import random
-from functions.calculation import values
+from functions.calculation import calculate_quality
 from visualisation import visualisation
 
 def greedy_time(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
     # check_connections_left = copy.deepcopy(all_connections)
     trajects = []
-    total_time_traject = 0
+    # total_time_traject = 0
     copy_connections = copy.deepcopy(all_connections)
 
     for _ in range(MAX_AMOUNT_TRAJECTS):
@@ -41,12 +41,12 @@ def greedy_time(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 break
            
         trajects.append(traject)
-        total_time_traject += total_time
+        # total_time_traject += total_time
 
-
-    quality = values(all_connections, copy_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
+    quality = calculate_quality(trajects, graph, MAX_AMOUNT_TRAJECTS)
+    # quality = values(all_connections, copy_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
 
     if iteration == 1:
-        visualisation(graph, trajects, 'greedy_time_visualisation.png')
+        visualisation(graph, trajects, 'greedy_time_visualisation_h.png')
 
     return quality

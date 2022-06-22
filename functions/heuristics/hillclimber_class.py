@@ -77,3 +77,5 @@ class Hillclimber:
 
             # Accept it if it is better
             self.check_solution(new_trajects)
+    #         # Accept it if it is better
+    #         self.check_solution(new_trajects)

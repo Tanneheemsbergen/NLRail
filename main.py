@@ -29,11 +29,12 @@ def main (input_file_name, algorithm, iteration):
         if algorithm == "r":
             result, trajects = random_function_classes(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
+            print(result)
         elif algorithm == "g":
             result = greedy_time(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "df":
-            result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            result = depthfirst(station_graph, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "hc":
             hc = Hillclimber(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
