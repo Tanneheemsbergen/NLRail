@@ -12,6 +12,10 @@ def histogram(results, input_file_name, algorithm):
     plt.rcParams["figure.figsize"] = [10, 10]
     plt.rcParams["figure.autolayout"] = True
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c70dbd690ec656eba63607f2c850e8ce6c1f1662
     # Information
     x = sorted(results)
     xmin = x[0]
@@ -25,7 +29,11 @@ def histogram(results, input_file_name, algorithm):
     mean = statistics.mean(x)
     sd = statistics.stdev(x)
 
+<<<<<<< HEAD
     # Figure information and settings
+=======
+    # Figure information adn settings
+>>>>>>> c70dbd690ec656eba63607f2c850e8ce6c1f1662
     plt.grid()
     plt.hist(x, density=True, bins=bins, label="Data")
     plt.xticks(fontsize=15)
@@ -36,8 +44,21 @@ def histogram(results, input_file_name, algorithm):
     # Figure layout
     plt.title(f"Result of {iterations} iterations in space: {input_file_name}, with algorithm: {algorithm}", fontsize=18)
     plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
+<<<<<<< HEAD
     plt.savefig(f"Result-pictures/Histogram-{iterations}-{input_file_name}-{algorithm}.png")
 
+=======
+    #plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
+    plt.savefig(f"Result-pictures/Holland - Random algorithm of {iterations} iterations")
+    # plt.title(f"Alorithm of {iterations} iterations - {current_time}", fontsize=24)
+    plt.title(f"Holland - Random alorithm of {iterations} iterations", fontsize=24)
+    # - {current_time}", fontsize=24)
+    plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
+    #plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
+    plt.savefig(f"Result-pictures/Holland - Random algorithm of {iterations} iterations")
+    # plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
+    # plt.savefig(f"Result-pictures/Histogram-{iterations}-{current_time}.png")
+>>>>>>> c70dbd690ec656eba63607f2c850e8ce6c1f1662
 
 def visualisation(graph, trajects, filename):
     plt.rcParams["figure.figsize"] = [15, 20]
