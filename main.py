@@ -33,7 +33,6 @@ def main (input_file_name, algorithm, iteration):
         elif algorithm == "df":
             result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
-        
             
     if iteration > 1:
         histogram(results)
