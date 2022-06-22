@@ -6,12 +6,15 @@ from functions.heuristics.depth_first import depthfirst
 from functions.heuristics.hillclimber_class import Hillclimber
 import argparse
 
-def main (input_file_name, algorithm, iteration):
+
+def main(input_file_name, algorithm, iteration):
 
     # Open de input document and create an empty list for connections
     stations_input = f"csvfiles/Stations{input_file_name}.csv"
     connections_input = f"csvfiles/Connecties{input_file_name}.csv"
     station_graph = Graph(stations_input, connections_input)
+    space = input_file_name
+    algorithm = algorithm
 
     # Determine the maximum amount of trajects and time, based on the user input
     if input_file_name == "Holland":
@@ -36,19 +39,20 @@ def main (input_file_name, algorithm, iteration):
             results.append(result)
         elif algorithm == "hc":
             result = Hillclimber(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            results.append(result)
             print(result.trajects)
-            
+
     if iteration > 1:
-        histogram(results)
+        histogram(results, space, algorithm)
 
 
 if __name__ == "__main__":
     # Set-up parsing command line arguments
-    parser = argparse.ArgumentParser(description = "run algorithm")
+    parser = argparse.ArgumentParser(description="run algorithm")
 
     # Adding arguments
     parser.add_argument("Area", choices=["Holland", "Nationaal"], help="Connections in North - and South-Holland, or the entire Netherlands")
-    parser.add_argument("Heuristics", choices=["r", "g", "df", "hc"], help="r: Random, g: Greedy, df: Depth-first")
+    parser.add_argument("Heuristics", choices=["r", "g", "df", "hc"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber")
     parser.add_argument("Iterations", type=int, default=1000, help="The amount of iterations which the programm will be run, default is 1000")
 
     # Read arguments from command line

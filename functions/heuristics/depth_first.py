@@ -5,7 +5,7 @@ import csv
 from functions.calculation import values
 from visualisation import visualisation
 
-def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []
@@ -85,5 +85,10 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
     quality = values(all_connections, check_connections_left, total_time_traject, MAX_AMOUNT_TRAJECTS)
 
+    if iteration == 1:
+        visualisation(graph, trajects, 'depth_first_visualisation.png')
+
     print(quality)
+    return(quality)
+    
 
