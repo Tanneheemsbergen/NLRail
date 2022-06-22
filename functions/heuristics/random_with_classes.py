@@ -45,6 +45,6 @@ def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     quality = values(all_connections, check_connections_left, total_time_traject, MAX_AMOUNT_TRAJECTS)
 
     if iteration == 1:
-        visualisation(graph, trajects, 'Random.png')
+        visualisation(graph, trajects, 'random_visualisation_n.png')
     
     return quality
