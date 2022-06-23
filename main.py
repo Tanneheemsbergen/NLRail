@@ -26,6 +26,7 @@ def main(input_file_name, algorithm, iteration):
         MAX_TIME = 180
 
     results = []
+
     # Determine which algorithm to use based on the user input
     for i in range(iteration):
         print(i)
@@ -46,18 +47,19 @@ def main(input_file_name, algorithm, iteration):
             hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
 
-
+    # Creates a histogram When a algorithm is runs more than 1 time
     if iteration > 1:
         histogram(results, space, algorithm)
 
 
 if __name__ == "__main__":
+    
     # Set-up parsing command line arguments
     parser = argparse.ArgumentParser(description="run algorithm")
 
     # Adding arguments
     parser.add_argument("Area", choices=["Holland", "Nationaal"], help="Connections in North - and South-Holland, or the entire Netherlands")
-    parser.add_argument("algorithms", choices=["r", "g", "df", "hc", "ghc"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber")
+    parser.add_argument("algorithms", choices=["r", "g", "df", "hc", "ghc"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber, ghc: Greedy hill-climber")
     parser.add_argument("Iterations", type=int, default=1000, help="The amount of iterations which the programm will be run, default is 1000")
 
     # Read arguments from command line
