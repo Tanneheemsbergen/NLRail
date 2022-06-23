@@ -13,7 +13,7 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     copy_connections = copy.deepcopy(all_connections)
 
     for _ in range(MAX_AMOUNT_TRAJECTS):
-         
+
         total_time = 0
         station = random.choices(list(copy_connections.keys()), k=1)[0]
 
@@ -26,7 +26,7 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         else:
             while len(list(copy_connections[station].time.keys())) == 0:
                 station = random.choices(list(copy_connections.keys()), k=1)[0]
-                          
+
         traject = [station]
         if station != ' ':
             states = list(copy_connections[station].time.keys())
@@ -37,7 +37,7 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
             next_state = states.pop()
             traject.append(next_state)
-            
+
             # print(f'next_state: {next_state}')
             # print(f"added to traject {traject}")
             # print("hoeveelheid kinderen")
@@ -56,7 +56,7 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 copy_connections[next_state].time.pop(station)
                 if next_state in list(check_connections_left[station].time.keys()):
                     check_connections_left[station].time.pop(next_state)
-                        
+
                 if station in list(check_connections_left[next_state].time.keys()):
                     check_connections_left[next_state].time.pop(station)
                 # print(f'options connections after pop: {list(copy_connections[next_state].time.keys())}')
@@ -68,9 +68,9 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 # print(f'states: {states}')
                 # print(f'total time: {total_time_traject}')
                 station = next_state
-                
+
             else:
-                
+
                 # Stop if we find a solution
                 break
 
@@ -91,5 +91,3 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     print(trajects)
     print(quality)
     return(quality)
-    
-

@@ -10,7 +10,7 @@ import argparse
 
 def main(input_file_name, algorithm, iteration):
 
-    # Open de input document and create an empty list for connections
+    # Opens input document and create an empty list for connections
     stations_input = f"csvfiles/Stations{input_file_name}.csv"
     connections_input = f"csvfiles/Connecties{input_file_name}.csv"
     station_graph = Graph(stations_input, connections_input)
@@ -44,7 +44,7 @@ def main(input_file_name, algorithm, iteration):
             hc = Hillclimber(station_graph, 250, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
         elif algorithm == "ghc":
-            hc = GreedyHillclimber(station_graph, 200000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
 
     # Creates a histogram When a algorithm is runs more than 1 time
