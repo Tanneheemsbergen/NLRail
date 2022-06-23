@@ -44,7 +44,7 @@ def main(input_file_name, algorithm, iteration):
             hc = Hillclimber(station_graph, 250, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
         elif algorithm == "ghc":
-            hc = GreedyHillclimber(station_graph, 200000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = GreedyHillclimber(station_graph, 250, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
 
 
