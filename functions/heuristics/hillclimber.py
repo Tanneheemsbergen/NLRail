@@ -1,109 +1,74 @@
 import random
 import copy
+from tabnanny import check
 from functions.calculation import calculate_quality
 from visualisation import visualisation
+from functions.heuristics.random import random_function_classes
 
-def hillclimber_classes(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
-    all_connections = graph.all_stations
-    check_connections_left = copy.deepcopy(all_connections)
-    trajects = []
-    total_time_traject = 0
-    quality = 0
-    besttrajects = []
+class Hillclimber:
 
-    for i in range(MAX_AMOUNT_TRAJECTS):
-        copy_connections = copy.deepcopy(all_connections)
+    def __init__(self, graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+        self.graph = graph
+        self.trajects = self.get_solution(iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+        self.quality = calculate_quality(self.trajects, self.graph, MAX_AMOUNT_TRAJECTS)
+        self.get_best_traject = self.run(rounds, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=True)
+
+
+    def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+        result, trajects = random_function_classes(self.graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+        return trajects
+
+    def mutate_traject(self, MAX_TIME):
+        all_connections = copy.deepcopy(self.graph.all_stations)
         traject = []
-        besttraject = []
         total_time = 0
         station = random.choices(list(all_connections.keys()), k=1)[0]
         traject.append(station)
         while total_time < MAX_TIME:
-
-            if len(list(copy_connections[station].time.keys())) > 0:
-                next_station = random.choices(list(copy_connections[station].time.keys()), k=1)[0]
+            if len(list(all_connections[station].time.keys())) > 0:
+                next_station = random.choices(list(all_connections[station].time.keys()), k=1)[0]
             else:
                 break
 
-            if (total_time + copy_connections[station].time[next_station]) <= MAX_TIME:
+            if (total_time + all_connections[station].time[next_station]) <= MAX_TIME:
                 traject.append(next_station)
-                total_time += copy_connections[station].time[next_station]
-                copy_connections[station].time.pop(next_station)
-                copy_connections[next_station].time.pop(station)
-                if next_station in list(check_connections_left[station].time.keys()):
-                    check_connections_left[station].time.pop(next_station)
-                if station in list(check_connections_left[next_station].time.keys()):
-                    check_connections_left[next_station].time.pop(station)
-
+                total_time += all_connections[station].time[next_station]
+                all_connections[station].time.pop(next_station)
+                all_connections[next_station].time.pop(station)
                 station = next_station
             else:
                 break
-        total_time_traject += total_time
-        trajects.append(traject)
-        print(traject)
-        total_connections = 0
-        for i in all_connections:
-            total_connections += len(all_connections[i].time)
+        return traject
 
-        total_connections = total_connections / 2
+    def mutate_solution(self, trajects,  MAX_TIME):
+        check_trajects = copy.deepcopy(trajects)
+        check_trajects.pop(random.randrange(len(check_trajects)))
+        new_traject = self.mutate_traject(MAX_TIME)
+        check_trajects.append(new_traject)
+        return check_trajects
 
-        connections_left = 0
 
-        for i in check_connections_left:
-            connections_left += len(check_connections_left[i].time)
+    def check_solution(self, check_trajects, MAX_AMOUNT_TRAJECTS):
+        new_quality = calculate_quality(check_trajects, self.graph, MAX_AMOUNT_TRAJECTS)
+        old_quality = self.quality
 
-        connections_left = connections_left / 2
+        if new_quality >= old_quality:
+            self.trajects = check_trajects
+            self.quality = new_quality
+            print(new_quality)
 
-        amount_of_connections = total_connections - connections_left
-        total_time_traject += total_time
-    new_quality = calculate_quality(amount_of_connections, total_connections, total_time_traject, MAX_AMOUNT_TRAJECTS)
-    # if new_quality >= quality and len(besttrajects) == 0:
-    #      quality = new_quality
-    #      traject = besttraject
-    #      besttrajects.append(besttraject)
-    if new_quality >= quality and len(trajects) != 0:
-        # trajects.remove(traject)
-        quality = new_quality
-        # traject = besttraject
-        # besttrajects.append(besttraject)
-    elif new_quality < quality:
-         trajects.remove(traject)
-         quality = new_quality
-    # print(traject)
-    # print(besttrajects)
-    print(trajects)
-    print(quality)
-    # print(traject)
-    visualisation(graph, trajects, 'random_visualisation.png')
-return quality
+    def run(self, iterations, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=False):
 
-    # print(new_quality)
-    # if new_quality >= quality and len(besttrajects) == 0:
-    #      quality = new_quality
-    #      besttraject = traject
-    #      besttrajects.append(besttraject)
-    # elif new_quality >= quality and len(besttrajects) != 0:
-    #     besttrajects.remove(besttraject)
-    #     quality = new_quality
-    #     besttraject = traject
-    #     besttrajects.append(besttraject)
-    # elif new_quality < quality:
-    #     trajects.remove(traject)
-    #     new_quality = quality
-    # return quality
-        # elif new_quality >= quality and len(trajects) != 0:
-        #     trajects.remove(traject)
-        #     quality = new_quality
-        #     besttraject = traject
-        #     besttrajects.append(besttraject)
-        #     if len(besttrajects) == 0:
-        #         besttraject = traject
-        #     elif len(besttrajects) != 0:
-        #         besttrajects.remove(besttraject)
-        #         besttrajects.append(besttraject)
-    # print(besttrajects)
-    # print(trajects)
-    # print(f"total time of all trajects: {total_time_traject}")
-    # print(f"connections not used {check_connections_left}")
-    #
-    # print(calculate_quality(connections_used, len(all_connections),total_time_traject,MAX_AMOUNT_TRAJECTS))
+        self.iterations = iterations
+
+        for iteration in range(iterations):
+            # Nice trick to only print if variable is set to True
+            print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
+
+            # Create a copy of the graph to simulate the change
+            new_trajects = copy.deepcopy(self.trajects)
+
+            check_trajects = self.mutate_solution(new_trajects, MAX_TIME)
+
+            # Accept it if it is better
+            self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)

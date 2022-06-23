@@ -1,9 +1,9 @@
-from functions.heuristics.random_with_classes import random_function_classes
+from functions.heuristics.random import random_function_classes
 from visualisation import histogram
 from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
 from functions.heuristics.depth_first import depthfirst
-from functions.heuristics.hillclimber_class import Hillclimber
+from functions.heuristics.hillclimber import Hillclimber
 from functions.calculation import calculate_quality
 import argparse
 
