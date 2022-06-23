@@ -4,7 +4,7 @@ import csv
 from functions.calculation import calculate_quality
 from visualisation import visualisation
 
-def random_function_classes(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+def random_function(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
     trajects = []

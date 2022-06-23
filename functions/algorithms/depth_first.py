@@ -31,8 +31,9 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         traject = [station]
         if station != ' ':
             states = list(copy_connections[station].time.keys())
-    
+
         while states and len(list(copy_connections[station].time.keys())) > 0 and station != 0:
+            print(states)
             # print(f'traject: {traject}')
 
             next_state = states.pop()
