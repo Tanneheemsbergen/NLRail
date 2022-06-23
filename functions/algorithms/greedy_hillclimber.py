@@ -1,10 +1,9 @@
 import random
 import copy
-from tabnanny import check
 from functions.algorithms.greedy_time import greedy_time
 from functions.helpers.calculation import calculate_quality
 from functions.helpers.visualisation import visualisation
-from functions.algorithms.randomise import random_function
+
 
 class GreedyHillclimber:
     """
@@ -89,5 +88,9 @@ class GreedyHillclimber:
 
             # Accepts solution it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
+
+            # When the code is only run 1 time create a visualisation
+            if iteration == 1:
+                visualisation(self.graph, self.trajects, 'Greedy_hillclimber.png')
 
         return(self.quality)
