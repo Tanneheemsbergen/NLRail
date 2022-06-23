@@ -1,6 +1,5 @@
 import random
 import copy
-from tabnanny import check
 from functions.helpers.calculation import calculate_quality
 from functions.helpers.visualisation import visualisation
 from functions.algorithms.randomise import random_function
