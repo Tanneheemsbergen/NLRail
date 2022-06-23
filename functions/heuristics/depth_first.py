@@ -28,7 +28,6 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             while len(list(copy_connections[station].time.keys())) == 0:
                 station = random.choices(list(copy_connections.keys()), k=1)[0]
                           
-        
         traject = [station]
         if station != ' ':
             states = list(copy_connections[station].time.keys())
