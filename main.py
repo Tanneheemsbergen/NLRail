@@ -1,10 +1,10 @@
-from functions.heuristics.random_with_classes import random_function_classes
+from functions.heuristics.random_function import random_function
 from visualisation import histogram
 from functions.classes.graph_class import Graph
 from functions.heuristics.greedy_time import greedy_time
 from functions.heuristics.depth_first import depthfirst
-from functions.heuristics.hillclimber_class import Hillclimber
 from functions.heuristics.greedy_hillclimber import GreedyHillclimber
+from functions.heuristics.hillclimber import Hillclimber
 from functions.calculation import calculate_quality
 import argparse
 
@@ -31,7 +31,7 @@ def main(input_file_name, algorithm, iteration):
     for i in range(iteration):
         print(i)
         if algorithm == "r":
-            result, trajects = random_function_classes(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            result, trajects = random_function(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
             print(result)
         elif algorithm == "g":

@@ -3,7 +3,7 @@ import copy
 from tabnanny import check
 from functions.calculation import calculate_quality
 from visualisation import visualisation
-from functions.heuristics.random_function import random_function
+from functions.heuristics.random import random_function_classes
 
 class Hillclimber:
 
@@ -15,7 +15,7 @@ class Hillclimber:
 
 
     def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
-        result, trajects = random_function(self.graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+        result, trajects = random_function_classes(self.graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
         return trajects
 
     def mutate_traject(self, MAX_TIME):
@@ -55,7 +55,7 @@ class Hillclimber:
         if new_quality >= old_quality:
             self.trajects = check_trajects
             self.quality = new_quality
-
+            print(new_quality)
 
     def run(self, iterations, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=False):
 
@@ -72,6 +72,3 @@ class Hillclimber:
 
             # Accept it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
-
-        return(self.quality)
-
