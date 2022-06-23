@@ -36,7 +36,7 @@ def histogram(results, input_file_name, algorithm):
     # Figure layout
     plt.title(f"Result of {iterations} iterations in space: {input_file_name}, with algorithm: {algorithm}", fontsize=18)
     plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
-    plt.savefig(f"Result-pictures/Histogram-{iterations}-{input_file_name}-{algorithm}.png")
+    plt.savefig(f"result-pictures/Histogram-{iterations}-{input_file_name}-{algorithm}.png")
 
 
 def visualisation(graph, trajects, filename):
@@ -86,4 +86,4 @@ def visualisation(graph, trajects, filename):
     for y, x, s in zip(y, x, name_stations):
         plt.text(y, x, s, fontsize=15)
 
-    plt.savefig(f"Result-pictures/{filename}")
+    plt.savefig(f"result-pictures/{filename}")
