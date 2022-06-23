@@ -44,8 +44,8 @@ def main(input_file_name, algorithm, iteration):
             hc.get_best_traject
 
 
-    if iteration > 1:
-        histogram(results, space, algorithm)
+    #if iteration > 1:
+    #    histogram(results, space, algorithm)
 
 
 if __name__ == "__main__":

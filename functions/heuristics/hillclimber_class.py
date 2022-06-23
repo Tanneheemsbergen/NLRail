@@ -73,3 +73,6 @@ class Hillclimber:
             # Accept it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
 
+            # Return quality
+        return(self.quality)
+
