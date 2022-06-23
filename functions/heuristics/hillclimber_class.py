@@ -7,12 +7,11 @@ from functions.heuristics.random_with_classes import random_function_classes
 
 class Hillclimber:
 
-    def __init__(self, graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+    def __init__(self, graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         self.graph = graph
         self.trajects = self.get_solution(iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-        self.checktrajects = copy.deepcopy(self.trajects)
         self.quality = calculate_quality(self.trajects, self.graph, MAX_AMOUNT_TRAJECTS)
-        self.get_best_traject = self.run(50, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=True)
+        self.get_best_traject = self.run(rounds, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=True)
 
 
     def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
