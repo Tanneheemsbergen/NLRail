@@ -10,7 +10,7 @@ import argparse
 
 def main(input_file_name, algorithm, iteration):
 
-    # Open de input document and create an empty list for connections
+    # Opens input document and create an empty list for connections
     stations_input = f"csvfiles/Stations{input_file_name}.csv"
     connections_input = f"csvfiles/Connecties{input_file_name}.csv"
     station_graph = Graph(stations_input, connections_input)
@@ -53,7 +53,7 @@ def main(input_file_name, algorithm, iteration):
 
 
 if __name__ == "__main__":
-    
+
     # Set-up parsing command line arguments
     parser = argparse.ArgumentParser(description="run algorithm")
 
