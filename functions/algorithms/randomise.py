@@ -1,6 +1,6 @@
 import random
 import copy
-import csv
+from functions.helpers.check50 import check
 from functions.helpers.calculation import calculate_quality
 from functions.helpers.visualisation import visualisation
 
@@ -46,4 +46,5 @@ def random_function(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
     quality = calculate_quality(trajects, graph, MAX_AMOUNT_TRAJECTS)
 
+    check(trajects, quality)
     return quality, trajects
