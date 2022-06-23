@@ -72,3 +72,9 @@ class Hillclimber:
 
             # Accept it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
+
+            # When the code is only run 1 time create a visualisation
+            if iteration == 1:
+                visualisation(self.graph, self.trajects, 'Hillclimber.png')
+
+        return self.quality
