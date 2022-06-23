@@ -1,10 +1,10 @@
 import random
 import copy
 from tabnanny import check
-from functions.heuristics.greedy_time import greedy_time
+from functions.algorithms.greedy_time import greedy_time
 from functions.calculation import calculate_quality
 from visualisation import visualisation
-from functions.heuristics.random_function import random_function
+from functions.algorithms.randomise import random_function
 
 class GreedyHillclimber:
 
