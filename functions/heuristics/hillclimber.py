@@ -3,7 +3,7 @@ import copy
 from tabnanny import check
 from functions.calculation import calculate_quality
 from visualisation import visualisation
-from functions.heuristics.random import random_function_classes
+from functions.heuristics.random_function import random_function_classes
 
 class Hillclimber:
 
