@@ -1,11 +1,10 @@
 from functions.algorithms.randomise import random_function
-from visualisation import histogram
+from functions.helpers.visualisation import histogram
 from functions.classes.graph_class import Graph
 from functions.algorithms.greedy_time import greedy_time
 from functions.algorithms.depth_first import depthfirst
 from functions.algorithms.greedy_hillclimber import GreedyHillclimber
 from functions.algorithms.hillclimber import Hillclimber
-from functions.calculation import calculate_quality
 import argparse
 
 
@@ -44,7 +43,7 @@ def main(input_file_name, algorithm, iteration):
             hc = Hillclimber(station_graph, 250, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
         elif algorithm == "ghc":
-            hc = GreedyHillclimber(station_graph, 250, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
 
 

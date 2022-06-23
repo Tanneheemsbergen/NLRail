@@ -2,12 +2,16 @@ import random
 import copy
 from tabnanny import check
 from functions.algorithms.greedy_time import greedy_time
-from functions.calculation import calculate_quality
-from visualisation import visualisation
+from functions.helpers.calculation import calculate_quality
+from functions.helpers.visualisation import visualisation
 from functions.algorithms.randomise import random_function
 
 class GreedyHillclimber:
-
+    """
+    The GreedyHillClimber class first creates a solution using the greedy algorithm.
+    Thereafter, a random traject will be replaced by a new greedytraject. Each
+    improvement will be used for the next iteration.
+    """
     def __init__(self, graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         self.graph = graph
         self.trajects = self.get_solution(iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
@@ -16,10 +20,16 @@ class GreedyHillclimber:
 
 
     def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+        """
+        Gets a greedy solution from the greedy_time algorithm.
+        """
         result, trajects = greedy_time(self.graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
         return trajects
 
     def mutate_traject(self, MAX_TIME):
+        """
+        Creates a greedy traject.
+        """
         all_connections = copy.deepcopy(self.graph.all_stations)
         traject = []
         total_time = 0
@@ -27,10 +37,10 @@ class GreedyHillclimber:
         traject.append(station)
         while total_time < MAX_TIME:
             if len(list(all_connections[station].time.keys())) > 0:
+                # Gets station with the least amount of time and make connection
                 next_station = min(all_connections[station].time, key=all_connections[station].time.get)
             else:
                 break
-
             if (total_time + all_connections[station].time[next_station]) <= MAX_TIME:
                 traject.append(next_station)
                 total_time += all_connections[station].time[next_station]
@@ -42,6 +52,9 @@ class GreedyHillclimber:
         return traject
 
     def mutate_solution(self, trajects,  MAX_TIME):
+        """
+        Changes a random traject from the solution with a created greedy traject.
+        """
         check_trajects = copy.deepcopy(trajects)
         check_trajects.pop(random.randrange(len(check_trajects)))
         new_traject = self.mutate_traject(MAX_TIME)
@@ -50,6 +63,9 @@ class GreedyHillclimber:
 
 
     def check_solution(self, check_trajects, MAX_AMOUNT_TRAJECTS):
+        """
+        Checks the solution and remembers and accepts the solution, if better.
+        """
         new_quality = calculate_quality(check_trajects, self.graph, MAX_AMOUNT_TRAJECTS)
         old_quality = self.quality
 
@@ -59,19 +75,19 @@ class GreedyHillclimber:
 
 
     def run(self, iterations, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=False):
-
+        """
+        Runs the hillclimber for a chosen amount of iterations.
+        """
         self.iterations = iterations
 
         for iteration in range(iterations):
-            # Nice trick to only print if variable is set to True
-            # print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
+            print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
 
-            # Create a copy of the graph to simulate the change
             new_trajects = copy.deepcopy(self.trajects)
-
+            # Creates new solution by replacing one traject
             check_trajects = self.mutate_solution(new_trajects, MAX_TIME)
 
-            # Accept it if it is better
+            # Accepts solution it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
 
         return(self.quality)
