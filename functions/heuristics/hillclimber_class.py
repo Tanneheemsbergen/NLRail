@@ -55,7 +55,7 @@ class Hillclimber:
         if new_quality >= old_quality:
             self.trajects = check_trajects
             self.quality = new_quality
-            print(new_quality)
+
 
     def run(self, iterations, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=False):
 
@@ -72,4 +72,6 @@ class Hillclimber:
 
             # Accept it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
+
+        return(self.quality)
 
