@@ -1,7 +1,7 @@
 import copy
 import random
-from functions.calculation import calculate_quality
-from visualisation import visualisation
+from functions.helpers.calculation import calculate_quality
+from functions.helpers.visualisation import visualisation
 
 def greedy_time(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations

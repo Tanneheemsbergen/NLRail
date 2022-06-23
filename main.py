@@ -1,11 +1,10 @@
-from functions.heuristics.random_function import random_function
-from visualisation import histogram
+from functions.algorithms.randomise import random_function
+from functions.helpers.visualisation import histogram
 from functions.classes.graph_class import Graph
-from functions.heuristics.greedy_time import greedy_time
-from functions.heuristics.depth_first import depthfirst
-from functions.heuristics.greedy_hillclimber import GreedyHillclimber
-from functions.heuristics.hillclimber import Hillclimber
-from functions.calculation import calculate_quality
+from functions.algorithms.greedy_time import greedy_time
+from functions.algorithms.depth_first import depthfirst
+from functions.algorithms.greedy_hillclimber import GreedyHillclimber
+from functions.algorithms.hillclimber import Hillclimber
 import argparse
 
 
@@ -58,11 +57,11 @@ if __name__ == "__main__":
 
     # Adding arguments
     parser.add_argument("Area", choices=["Holland", "Nationaal"], help="Connections in North - and South-Holland, or the entire Netherlands")
-    parser.add_argument("Heuristics", choices=["r", "g", "df", "hc", "ghc"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber")
+    parser.add_argument("algorithms", choices=["r", "g", "df", "hc", "ghc"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber")
     parser.add_argument("Iterations", type=int, default=1000, help="The amount of iterations which the programm will be run, default is 1000")
 
     # Read arguments from command line
     args = parser.parse_args()
 
     # Run main with provide arguments
-    main(args.Area, args.Heuristics, args.Iterations)
+    main(args.Area, args.algorithms, args.Iterations)

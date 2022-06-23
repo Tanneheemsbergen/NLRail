@@ -1,10 +1,10 @@
 import random
 import copy
 from tabnanny import check
-from functions.heuristics.greedy_time import greedy_time
-from functions.calculation import calculate_quality
-from visualisation import visualisation
-from functions.heuristics.random_function import random_function
+from functions.algorithms.greedy_time import greedy_time
+from functions.helpers.calculation import calculate_quality
+from functions.helpers.visualisation import visualisation
+from functions.algorithms.randomise import random_function
 
 class GreedyHillclimber:
 
@@ -64,7 +64,7 @@ class GreedyHillclimber:
 
         for iteration in range(iterations):
             # Nice trick to only print if variable is set to True
-            # print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
+            print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
 
             # Create a copy of the graph to simulate the change
             new_trajects = copy.deepcopy(self.trajects)
