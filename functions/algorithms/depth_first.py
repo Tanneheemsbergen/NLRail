@@ -1,11 +1,10 @@
 from cmath import inf
 import random
 import copy
-import csv
-from functions.calculation import calculate_quality
-from visualisation import visualisation
+from functions.helpers.calculation import calculate_quality
+from functions.helpers.visualisation import visualisation
 
-def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
+def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     value = -float('inf')
     all_connections = graph.all_stations
     check_connections_left = copy.deepcopy(all_connections)
@@ -14,7 +13,7 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     copy_connections = copy.deepcopy(all_connections)
 
     for _ in range(MAX_AMOUNT_TRAJECTS):
-         
+
         total_time = 0
         station = random.choices(list(copy_connections.keys()), k=1)[0]
 
@@ -27,7 +26,7 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         else:
             while len(list(copy_connections[station].time.keys())) == 0:
                 station = random.choices(list(copy_connections.keys()), k=1)[0]
-                          
+
         traject = [station]
         if station != ' ':
             states = list(copy_connections[station].time.keys())
@@ -38,7 +37,7 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
             next_state = states.pop()
             traject.append(next_state)
-            
+
             # print(f'next_state: {next_state}')
             # print(f"added to traject {traject}")
             # print("hoeveelheid kinderen")
@@ -57,7 +56,7 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 copy_connections[next_state].time.pop(station)
                 if next_state in list(check_connections_left[station].time.keys()):
                     check_connections_left[station].time.pop(next_state)
-                        
+
                 if station in list(check_connections_left[next_state].time.keys()):
                     check_connections_left[next_state].time.pop(station)
                 # print(f'options connections after pop: {list(copy_connections[next_state].time.keys())}')
@@ -69,9 +68,9 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
                 # print(f'states: {states}')
                 # print(f'total time: {total_time_traject}')
                 station = next_state
-                
+
             else:
-                
+
                 # Stop if we find a solution
                 break
 
@@ -85,8 +84,10 @@ def depthfirst(graph, MAX_AMOUNT_TRAJECTS, MAX_TIME):
 
     quality = calculate_quality(trajects, graph, MAX_AMOUNT_TRAJECTS)
 
+    # When the code is only run 1 time create a visualisation
+    if iteration == 1:
+        visualisation(graph, trajects, 'Hillclimber.png')
+
     print(trajects)
     print(quality)
     return(quality)
-    
-
