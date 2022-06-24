@@ -48,7 +48,7 @@ def main(input_file_name, algorithm, iteration):
         elif algorithm == "ghc":
             hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
-        elif algorithm == "dfhc":
+        elif algorithm == "gfhc":
             hc = DepthFirstHillclimber(station_graph, 60000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
         elif algorithm == "sa":
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
     # Adding arguments
     parser.add_argument("Area", choices=["Holland", "Nationaal"], help="Connections in North - and South-Holland, or the entire Netherlands")
-    parser.add_argument("algorithms", choices=["r", "g", "df", "hc", "ghc", "dfhc", "sa"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber, ghc: Greedy hill-climber")
+    parser.add_argument("algorithms", choices=["r", "g", "df", "hc", "ghc", "gfhc", "sa"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber, ghc: Greedy hill-climber, gfhc: get first hill-climber, sa: simulating-anealing")
     parser.add_argument("Iterations", type=int, default=1000, help="The amount of iterations which the programm will be run, default is 1000")
 
     # Read arguments from command line
