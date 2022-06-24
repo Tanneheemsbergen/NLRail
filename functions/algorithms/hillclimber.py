@@ -15,6 +15,7 @@ class Hillclimber:
         self.trajects = self.get_solution(iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
         self.quality = calculate_quality(self.trajects, self.graph, MAX_AMOUNT_TRAJECTS)
         self.get_best_traject = self.run(rounds, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=True)
+        self.rounds = rounds
 
 
     def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
@@ -72,7 +73,7 @@ class Hillclimber:
         if new_quality >= old_quality:
             self.trajects = check_trajects
             self.quality = new_quality
-            print(new_quality)
+
 
     def run(self, iterations, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=False):
         """
