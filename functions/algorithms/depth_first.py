@@ -36,8 +36,6 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             # print(f'traject: {traject}')
 
             next_state = states.pop()
-            traject.append(next_state)
-
             # print(f'next_state: {next_state}')
             # print(f"added to traject {traject}")
             # print("hoeveelheid kinderen")
@@ -48,6 +46,7 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             # print(copy_connections[next_state].time[station])
             # print(f"time {total_time_traject + copy_connections[next_state].time[station]}")
             if len(list(copy_connections[next_state].time.keys())) > 0 and (total_time + copy_connections[next_state].time[station]) <= MAX_TIME:
+                traject.append(next_state)
                 total_time_traject += copy_connections[next_state].time[station]
                 total_time += copy_connections[next_state].time[station]
                 # print(f'from {station} to {next_state}')

@@ -41,7 +41,7 @@ def main(input_file_name, algorithm, iteration):
             result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "hc":
-            hc = Hillclimber(station_graph, 250, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = Hillclimber(station_graph, 2000000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
         elif algorithm == "ghc":
             hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)

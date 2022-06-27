@@ -84,8 +84,8 @@ def visualisation(graph, trajects, filename):
             index_next_station = name_stations.index(traject[station + 1])
 
             # Plot the lines between the connections of the trajects
-            plt.plot([y[index_first_station], y[index_next_station]], 
-                        [x[index_first_station], x[index_next_station]], 
+            plt.plot([y[index_first_station], y[index_next_station]],
+                        [x[index_first_station], x[index_next_station]],
                             color, linewidth=linewidth, alpha=0.3)
 
         # If all the colors are used, it takes the first color from the list again
@@ -99,8 +99,4 @@ def visualisation(graph, trajects, filename):
     for y, x, s in zip(y, x, name_stations):
         plt.text(y, x, s, fontsize=15)
 
-<<<<<<< HEAD
     plt.savefig(f"result-pictures/{filename}")
-=======
-    plt.savefig(f"Result-pictures/{filename}")
->>>>>>> e234c0c27c48548fa3e3744824824b2d01b1507b
