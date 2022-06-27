@@ -6,7 +6,7 @@ from functions.algorithms.get_first_option import get_first_option
 from functions.algorithms.greedy_hillclimber import GreedyHillclimber
 from functions.algorithms.hillclimber import Hillclimber
 from functions.algorithms.depth_hillclimber import DepthFirstHillclimber
-from functions.algorithms.simulating_anealing import SimulatedAnnealing
+from functions.algorithms.simulated_anealing import SimulatedAnnealing
 import argparse
 
 
@@ -30,6 +30,7 @@ def main(input_file_name, algorithm, iteration):
     results = []
 
     # Determine which algorithm to use based on the user input
+    print("Currently working on creating the visualisation!")
     for i in range(iteration):
         print(i)
         if algorithm == "r":
@@ -39,25 +40,25 @@ def main(input_file_name, algorithm, iteration):
         elif algorithm == "g":
             result, trajects = greedy_time(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
-        elif algorithm == "df":
-            result, trajects = get_first_option(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            results.append(result)
         elif algorithm == "hc":
-            hc = Hillclimber(station_graph, 10, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = Hillclimber(station_graph, 15000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             value = hc.get_best_traject
             results.append(value)
         elif algorithm == "ghc":
-            hc = GreedyHillclimber(station_graph, 10000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            hc.get_best_traject
+            hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            value = hc.get_best_traject
+            results.append(value)
         elif algorithm == "gfhc":
             hc = DepthFirstHillclimber(station_graph, 100, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            hc.get_best_traject
+            value = hc.get_best_traject
+            results.append(value)
         elif algorithm == "sa":
-            sa = SimulatedAnnealing(station_graph, 200000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME, 3000)
-            sa.get_best_traject
-            
+            sa = SimulatedAnnealing(station_graph, 5000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME, 3000)
+            value = sa.get_best_traject
+            results.append(value)
 
-    # Creates a histogram When a algorithm is runs more than 1 time
+
+    # Creates a histogram When a algorithm is run more than 1 time
     if iteration > 1:
         histogram(results, space, algorithm)
 

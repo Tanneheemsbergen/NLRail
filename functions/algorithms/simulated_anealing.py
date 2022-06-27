@@ -45,11 +45,10 @@ class SimulatedAnnealing(Hillclimber):
 
         probability = math.exp(-delta / self.T)
   
-        
-
         # Pull a random number between 0 and 1 and see if we accept the soltuion!
         if random.random() < probability:
             self.trajects = check_trajects
             self.quality = new_quality
+
         # Update the temperature
         self.update_temperature()
