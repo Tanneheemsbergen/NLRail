@@ -12,11 +12,11 @@ class Hillclimber:
     """
     def __init__(self, graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         self.graph = graph
+        self.iteration = iteration
         self.trajects = self.get_solution(iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
         self.quality = calculate_quality(self.trajects, self.graph, MAX_AMOUNT_TRAJECTS)
         self.get_best_traject = self.run(rounds, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=True)
-        self.rounds = rounds
-
+        
 
     def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         """
@@ -24,6 +24,7 @@ class Hillclimber:
         """
         result, trajects = random_function(self.graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
         return trajects
+
 
     def mutate_traject(self, MAX_TIME):
         """
@@ -50,17 +51,18 @@ class Hillclimber:
                 break
         return traject
 
+
     def mutate_solution(self, trajects,  MAX_TIME):
         """
         Changes a random traject from the solution with a created random traject.
         """
         check_trajects = copy.deepcopy(trajects)
+        
         # Remove random traject from solution
         check_trajects.pop(random.randrange(len(check_trajects)))
         new_traject = self.mutate_traject(MAX_TIME)
         check_trajects.append(new_traject)
         return check_trajects
-
 
     def check_solution(self, check_trajects, MAX_AMOUNT_TRAJECTS):
         """
@@ -93,7 +95,7 @@ class Hillclimber:
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
 
             # When the code is only run 1 time create a visualisation
-            if iteration == 1:
+            if self.iteration == 1:
                 visualisation(self.graph, self.trajects, 'Hillclimber.png')
 
         return self.quality
