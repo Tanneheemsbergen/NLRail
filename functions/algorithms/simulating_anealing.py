@@ -31,7 +31,7 @@ class SimulatedAnnealing(Hillclimber):
         method have passed.
         """
         self.T = self.T - (self.T0 / self.iterations)
-        print(self.iterations)
+        #print(self.iterations)
 
         # Exponential would look like this:
         # alpha = 0.99

@@ -11,6 +11,7 @@ def histogram(results, input_file_name, algorithm):
 
     # Information
     x = sorted(results)
+    print(x)
     iterations = len(x)
     current_time = datetime.datetime.now()
     mean = statistics.mean(x)

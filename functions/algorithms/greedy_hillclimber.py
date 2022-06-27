@@ -80,7 +80,7 @@ class GreedyHillclimber:
         self.iterations = iterations
 
         for iteration in range(iterations):
-            print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
+            #print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
 
             new_trajects = copy.deepcopy(self.trajects)
             # Creates new solution by replacing one traject

@@ -28,6 +28,9 @@ def main(input_file_name, algorithm, iteration):
         MAX_TIME = 180
 
     results = []
+    results_hc = []
+    results_ghc = []
+    results_sa = []
 
     # Determine which algorithm to use based on the user input
     print("Currently working on creating the visualisation!")
@@ -41,21 +44,20 @@ def main(input_file_name, algorithm, iteration):
             result, trajects = greedy_time(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "hc":
-            hc = Hillclimber(station_graph, 10, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = Hillclimber(station_graph, 5000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             value = hc.get_best_traject
             results.append(value)
+            results_hc.append(value)
         elif algorithm == "ghc":
-            hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = GreedyHillclimber(station_graph, 5000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             value = hc.get_best_traject
             results.append(value)
-        elif algorithm == "gfhc":
-            hc = DepthFirstHillclimber(station_graph, 100, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            value = hc.get_best_traject
-            results.append(value)
+            results_ghc.append(value)
         elif algorithm == "sa":
             sa = SimulatedAnnealing(station_graph, 5000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME, 3000)
             value = sa.get_best_traject
             results.append(value)
+            results_sa.append(value)
             
 
     # Creates a histogram When a algorithm is run more than 1 time
