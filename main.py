@@ -28,6 +28,7 @@ def main(input_file_name, algorithm, iteration):
     results = []
 
     # Determine which algorithm to use based on the user input
+    print("Currently working on creating the visualisation!")
     for i in range(iteration):
         print(i)
         if algorithm == "r":
@@ -37,15 +38,14 @@ def main(input_file_name, algorithm, iteration):
         elif algorithm == "g":
             result, trajects = greedy_time(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
-        elif algorithm == "df":
-            result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            results.append(result)
         elif algorithm == "hc":
-            hc = Hillclimber(station_graph, 200000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            hc.get_best_traject
+            hc = Hillclimber(station_graph, 15000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            value = hc.get_best_traject
+            results.append(value)
         elif algorithm == "ghc":
             hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-            hc.get_best_traject
+            value = hc.get_best_traject
+            results.append(value)
 
     # Creates a histogram When a algorithm is runs more than 1 time
     if iteration > 1:
