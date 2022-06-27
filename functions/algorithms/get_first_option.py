@@ -34,7 +34,7 @@ def get_first_option(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             # print(f'traject: {traject}')
 
             next_state = states.pop()
-            
+
 
             # print(f'next_state: {next_state}')
             # print(f"added to traject {traject}")
@@ -82,5 +82,5 @@ def get_first_option(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     if iteration == 1:
         visualisation(graph, trajects, 'Hillclimber.png')
     # print(quality)
-    
+
     return(quality, trajects)

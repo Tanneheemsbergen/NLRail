@@ -1,12 +1,7 @@
 import random
 import math
-
 from functions.algorithms.hillclimber import Hillclimber
 from functions.helpers.calculation import calculate_quality
-
-from functions.helpers.visualisation import visualisation
-from functions.algorithms.randomise import random_function
-import copy
 
 class SimulatedAnnealing(Hillclimber):
     """
@@ -17,9 +12,11 @@ class SimulatedAnnealing(Hillclimber):
     we use that as a parent class.
     """
     def __init__(self, graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME, temperature: int or float=1,):
+        
         # Starting temperature and current temperature
         self.T0 = temperature
         self.T = temperature
+
         # Use the init of the Hillclimber class
         super().__init__(graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
 
@@ -31,8 +28,12 @@ class SimulatedAnnealing(Hillclimber):
         method have passed.
         """
         self.T = self.T - (self.T0 / self.iterations)
+<<<<<<< HEAD:functions/algorithms/simulating_anealing.py
         #print(self.iterations)
 
+=======
+  
+>>>>>>> 469b19d74239a85cf54c725d4ac20b0fb4335f8f:functions/algorithms/simulated_anealing.py
         # Exponential would look like this:
         # alpha = 0.99
         # self.T = self.T * alpha
@@ -46,14 +47,13 @@ class SimulatedAnnealing(Hillclimber):
         old_quality = self.quality
 
         delta = old_quality - new_quality
+
         probability = math.exp(-delta / self.T)
-
-        # : Keep in mind that if we want to maximize the value, we use:
-        # delta = old_value - new_value
-
+  
         # Pull a random number between 0 and 1 and see if we accept the soltuion!
         if random.random() < probability:
             self.trajects = check_trajects
             self.quality = new_quality
+
         # Update the temperature
         self.update_temperature()

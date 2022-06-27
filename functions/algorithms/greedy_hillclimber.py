@@ -1,21 +1,19 @@
 import random
 import copy
+from functions.algorithms.hillclimber import Hillclimber
 from functions.algorithms.greedy_time import greedy_time
-from functions.helpers.calculation import calculate_quality
-from functions.helpers.visualisation import visualisation
 
 
-class GreedyHillclimber:
+class GreedyHillclimber(Hillclimber):
     """
     The GreedyHillClimber class first creates a solution using the greedy algorithm.
     Thereafter, a random traject will be replaced by a new greedytraject. Each
     improvement will be used for the next iteration.
     """
     def __init__(self, graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
-        self.graph = graph
-        self.trajects = self.get_solution(iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-        self.quality = calculate_quality(self.trajects, self.graph, MAX_AMOUNT_TRAJECTS)
-        self.get_best_traject = self.run(rounds, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=True)
+        
+        # Use the init of the Hillclimber class
+        super().__init__(graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
 
 
     def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
@@ -24,6 +22,7 @@ class GreedyHillclimber:
         """
         result, trajects = greedy_time(self.graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
         return trajects
+
 
     def mutate_traject(self, MAX_TIME):
         """
@@ -36,6 +35,7 @@ class GreedyHillclimber:
         traject.append(station)
         while total_time < MAX_TIME:
             if len(list(all_connections[station].time.keys())) > 0:
+
                 # Gets station with the least amount of time and make connection
                 next_station = min(all_connections[station].time, key=all_connections[station].time.get)
             else:
@@ -49,6 +49,7 @@ class GreedyHillclimber:
             else:
                 break
         return traject
+<<<<<<< HEAD
 
     def mutate_solution(self, trajects,  MAX_TIME):
         """
@@ -94,3 +95,5 @@ class GreedyHillclimber:
                 visualisation(self.graph, self.trajects, 'Greedy_hillclimber.png')
 
         return(self.quality)
+=======
+>>>>>>> 469b19d74239a85cf54c725d4ac20b0fb4335f8f

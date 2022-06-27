@@ -6,7 +6,7 @@ from functions.algorithms.get_first_option import get_first_option
 from functions.algorithms.greedy_hillclimber import GreedyHillclimber
 from functions.algorithms.hillclimber import Hillclimber
 from functions.algorithms.depth_hillclimber import DepthFirstHillclimber
-from functions.algorithms.simulating_anealing import SimulatedAnnealing
+from functions.algorithms.simulated_anealing import SimulatedAnnealing
 import argparse
 
 
