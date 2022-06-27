@@ -63,7 +63,7 @@ def main(input_file_name, algorithm, iteration):
         histogram(results, space, algorithm)
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
 
     # Set-up parsing command line arguments
     parser = argparse.ArgumentParser(description="run algorithm")
