@@ -4,7 +4,7 @@ import csv
 Makes an output file with the output of an algorithm (trajects and quality),
 so it can be checked with check50.
 """
-def check(trajects, quality):
+def check50(trajects, quality):
 
     # Creates a new file
     with open('output.csv', 'w') as file:

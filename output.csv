@@ -1,4 +1,5 @@
 train,stations
+<<<<<<< HEAD
 train_1,"[Heerlen, Sittard, Maastricht]"
 train_2,"[Roosendaal, Etten-Leur, Breda, Tilburg, Eindhoven, Weert, Roermond, Sittard, Heerlen]"
 train_3,"[Vlissingen, Roosendaal, Etten-Leur, Breda, Tilburg, s-Hertogenbosch, Oss, Nijmegen, Arnhem Centraal, Dieren, Zutphen]"
@@ -20,3 +21,26 @@ train_18,"[Schiedam Centrum, Rotterdam Blaak, Rotterdam Alexander, Rotterdam Cen
 train_19,"[Roosendaal, Dordrecht, Rotterdam Blaak, Rotterdam Alexander, Gouda, Alphen a/d Rijn, Utrecht Centraal, Schiphol Airport, Leiden Centraal, Den Haag HS]"
 train_20,"[Amsterdam Amstel, Hilversum, Utrecht Centraal, Schiphol Airport, Amsterdam Zuid, Amsterdam Sloterdijk, Amsterdam Centraal, Almere Centrum, Amsterdam Amstel, Amsterdam Zuid]"
 score,3485.168539325843
+=======
+train_1,"[Delft, Den Haag Centraal, Leiden Centraal, Heemstede-Aerdenhout, Haarlem, Beverwijk, Castricum, Alkmaar, Den Helder]"
+train_2,"[Sittard, Heerlen]"
+train_3,"[Breda, Tilburg, Eindhoven, s-Hertogenbosch, Tilburg]"
+train_4,"[Deventer, Zutphen, Apeldoorn, Amersfoort, Utrecht Centraal, Ede-Wageningen, Arnhem Centraal, Dieren, Zutphen]"
+train_5,"[Haarlem, Heemstede-Aerdenhout, Leiden Centraal, Alphen a/d Rijn, Utrecht Centraal, Ede-Wageningen, Arnhem Centraal, Nijmegen, Oss, s-Hertogenbosch, Utrecht Centraal, Amsterdam Amstel]"
+train_6,"[Den Helder, Alkmaar, Hoorn, Zaandam, Castricum, Alkmaar]"
+train_7,"[Maastricht, Sittard, Roermond, Weert, Eindhoven, s-Hertogenbosch, Oss, Nijmegen, Arnhem Centraal, Dieren, Zutphen, Deventer, Zwolle]"
+train_8,"[Heerenveen, Steenwijk, Zwolle, Assen, Groningen, Leeuwarden, Heerenveen]"
+train_9,"[Deventer, Apeldoorn, Amersfoort, Zwolle, Deventer, Almelo, Hengelo, Enschede]"
+train_10,"[Oss, s-Hertogenbosch, Eindhoven, Helmond, Venlo]"
+train_11,"[Hilversum, Utrecht Centraal, Alphen a/d Rijn, Gouda, Den Haag Laan v NOI, Delft, Den Haag HS, Leiden Centraal, Heemstede-Aerdenhout, Haarlem, Amsterdam Sloterdijk, Amsterdam Centraal]"
+train_12,"[Alkmaar, Den Helder]"
+train_13,"[Roosendaal, Vlissingen]"
+train_14,"[Helmond, Eindhoven, Weert, Roermond, Sittard, Heerlen]"
+train_15,"[Almere Centrum, Amsterdam Centraal, Amsterdam Amstel, Almere Centrum, Hilversum, Amsterdam Amstel, Amsterdam Zuid, Amsterdam Sloterdijk, Haarlem, Heemstede-Aerdenhout, Leiden Centraal, Alphen a/d Rijn]"
+train_16,"[Den Helder, Alkmaar, Hoorn, Zaandam, Beverwijk, Haarlem, Amsterdam Sloterdijk, Amsterdam Centraal, Almere Centrum]"
+train_17,"[Schiphol Airport, Utrecht Centraal, Amsterdam Amstel, Hilversum, Almere Centrum, Lelystad Centrum]"
+train_18,"[Den Haag Laan v NOI, Leiden Centraal, Den Haag HS, Gouda, Den Haag Laan v NOI, Delft, Den Haag Centraal, Leiden Centraal, Heemstede-Aerdenhout, Haarlem, Amsterdam Sloterdijk, Zaandam, Castricum, Beverwijk]"
+train_19,"[Schiedam Centrum, Delft, Den Haag Laan v NOI, Gouda, Den Haag HS, Leiden Centraal, Den Haag Laan v NOI]"
+train_20,"[Amsterdam Sloterdijk, Haarlem, Heemstede-Aerdenhout, Leiden Centraal, Schiphol Airport, Utrecht Centraal, Hilversum, Almere Centrum, Amsterdam Amstel, Utrecht Centraal, Amersfoort]"
+score,3843.2471910112363
+>>>>>>> f4cbe28b6792a9ee4cd74a1068a49f00f1bc4436
