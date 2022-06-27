@@ -1,0 +1,14 @@
+pytest
+snakeviz
+mypy
+flake8
+
+random
+copy
+csv
+argparse
+statistics
+
+datetime
+numpy
+matplotlib.pyplot

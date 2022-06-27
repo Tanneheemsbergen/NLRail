@@ -2,11 +2,14 @@ from functions.algorithms.randomise import random_function
 from functions.helpers.visualisation import histogram
 from functions.classes.graph_class import Graph
 from functions.algorithms.greedy_time import greedy_time
-from functions.algorithms.depth_first import depthfirst
+from functions.algorithms.get_first_option import get_first_option
 from functions.algorithms.greedy_hillclimber import GreedyHillclimber
 from functions.algorithms.hillclimber import Hillclimber
+from functions.algorithms.depth_hillclimber import DepthFirstHillclimber
+from functions.algorithms.simulating_anealing import SimulatedAnnealing
 import argparse
-
+import subprocess
+import time
 
 def main(input_file_name, algorithm, iteration):
 
@@ -28,6 +31,13 @@ def main(input_file_name, algorithm, iteration):
     results = []
 
     # Determine which algorithm to use based on the user input
+    # start = time.time()
+    # n_runs = 0
+    #
+    # while time.time() - start < 120:
+    #     print(f"run: {n_runs}")
+    #     # subprocess.call(["timeout", "60", "python3", "random_algorithm.py"])
+    #     n_runs += 1
     for i in range(iteration):
         print(i)
         if algorithm == "r":
@@ -38,14 +48,21 @@ def main(input_file_name, algorithm, iteration):
             result, trajects = greedy_time(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "df":
-            result = depthfirst(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            result, trajects = get_first_option(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
         elif algorithm == "hc":
-            hc = Hillclimber(station_graph, 2000000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = Hillclimber(station_graph, 6000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
         elif algorithm == "ghc":
             hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
+        elif algorithm == "gfhc":
+            hc = DepthFirstHillclimber(station_graph, 60000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc.get_best_traject
+        elif algorithm == "sa":
+            sa = SimulatedAnnealing(station_graph, 2000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME, 3000)
+            sa.get_best_traject
+
 
     # Creates a histogram When a algorithm is runs more than 1 time
     if iteration > 1:
@@ -59,7 +76,7 @@ if __name__ == "__main__":
 
     # Adding arguments
     parser.add_argument("Area", choices=["Holland", "Nationaal"], help="Connections in North - and South-Holland, or the entire Netherlands")
-    parser.add_argument("algorithms", choices=["r", "g", "df", "hc", "ghc"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber, ghc: Greedy hill-climber")
+    parser.add_argument("algorithms", choices=["r", "g", "df", "hc", "ghc", "gfhc", "sa"], help="r: Random, g: Greedy, df: Depth-first, hc: Hill-Climber, ghc: Greedy hill-climber, gfhc: get first hill-climber, sa: simulating-anealing")
     parser.add_argument("Iterations", type=int, default=1000, help="The amount of iterations which the programm will be run, default is 1000")
 
     # Read arguments from command line

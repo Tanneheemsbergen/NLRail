@@ -1,13 +1,12 @@
-from cmath import inf
 import random
 import copy
+from functions.helpers.check50 import check50
 from functions.helpers.calculation import calculate_quality
 from functions.helpers.visualisation import visualisation
 
-def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
-    value = -float('inf')
+
+def get_first_option(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     all_connections = graph.all_stations
-    check_connections_left = copy.deepcopy(all_connections)
     trajects = []
     total_time_traject = 0
     copy_connections = copy.deepcopy(all_connections)
@@ -31,11 +30,12 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         if station != ' ':
             states = list(copy_connections[station].time.keys())
 
-        while states and len(list(copy_connections[station].time.keys())) > 0 and station != 0:
-            print(states)
+        while states and len(list(copy_connections[station].time.keys())) > 0 and station != 0 and total_time <= MAX_TIME:
             # print(f'traject: {traject}')
 
             next_state = states.pop()
+
+
             # print(f'next_state: {next_state}')
             # print(f"added to traject {traject}")
             # print("hoeveelheid kinderen")
@@ -45,20 +45,15 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             # print(copy_connections[next_state].time)
             # print(copy_connections[next_state].time[station])
             # print(f"time {total_time_traject + copy_connections[next_state].time[station]}")
-            if len(list(copy_connections[next_state].time.keys())) > 0 and (total_time + copy_connections[next_state].time[station]) <= MAX_TIME:
+            if len(list(copy_connections[next_state].time.keys())) > 0 and (total_time + copy_connections[station].time[next_state]) <= MAX_TIME:
                 traject.append(next_state)
-                total_time_traject += copy_connections[next_state].time[station]
-                total_time += copy_connections[next_state].time[station]
+                total_time_traject += copy_connections[station].time[next_state]
+                total_time += copy_connections[station].time[next_state]
                 # print(f'from {station} to {next_state}')
                 # print(f'options connections before pop: {list(copy_connections[next_state].time.keys())}')
                 copy_connections[station].time.pop(next_state)
                 copy_connections[next_state].time.pop(station)
-                if next_state in list(check_connections_left[station].time.keys()):
-                    check_connections_left[station].time.pop(next_state)
 
-                if station in list(check_connections_left[next_state].time.keys()):
-                    check_connections_left[next_state].time.pop(station)
-                # print(f'options connections after pop: {list(copy_connections[next_state].time.keys())}')
 
                 children = list(copy_connections[next_state].time.keys())
                 for child in children:
@@ -82,11 +77,10 @@ def depthfirst(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
             # self.graph = self.best_solution
 
     quality = calculate_quality(trajects, graph, MAX_AMOUNT_TRAJECTS)
-
+    check50(trajects, quality)
     # When the code is only run 1 time create a visualisation
     if iteration == 1:
         visualisation(graph, trajects, 'Hillclimber.png')
+    # print(quality)
 
-    print(trajects)
-    print(quality)
-    return(quality)
+    return(quality, trajects)

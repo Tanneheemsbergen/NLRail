@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import statistics
-
+import datetime
 
 def histogram(results, input_file_name, algorithm):
 
@@ -11,28 +11,23 @@ def histogram(results, input_file_name, algorithm):
 
     # Information
     x = sorted(results)
-    xmin = x[0]
     iterations = len(x)
-
-    # Other informaiton
-    q25, q75 = np.percentile(x, [25, 75])
-    bin_width = 2 * (q75 - q25) * len(x) ** (-1/3)
-    bins = round((x[-1] - x[0]) / bin_width)
+    current_time = datetime.datetime.now()
     mean = statistics.mean(x)
     sd = statistics.stdev(x)
 
     # Figure information and settings
     plt.grid()
-    plt.hist(x, density=True, bins=bins, label="Data")
-    plt.xticks(fontsize=15)
-    plt.yticks(fontsize=15)
-    plt.ylabel("Probabilty Density", fontsize=18)
+    plt.hist(x, density=False, bins=100, label="Data")
+    plt.xticks(range(0, 11000, 1000), fontsize=15)
+    plt.yticks(range(0, 450, 50), fontsize=15)
+    plt.ylabel("Frequency", fontsize=18)
     plt.xlabel("K-value", fontsize=18)
 
     # Figure layout
     plt.title(f"Result of {iterations} iterations in space: {input_file_name}, with algorithm: {algorithm}", fontsize=18)
-    plt.text(xmin, 0.0001, f"mean: {mean},\n sd: {sd}", fontsize=15)
-    plt.savefig(f"result-pictures/Histogram-{iterations}-{input_file_name}-{algorithm}.png")
+    plt.text(200, 25, f"mean: {mean},\n sd: {sd}", fontsize=18)
+    plt.savefig(f"Result-pictures/Histogram-{iterations}-{input_file_name}-{algorithm}-{current_time}.png")
 
 
 """
@@ -99,4 +94,4 @@ def visualisation(graph, trajects, filename):
     for y, x, s in zip(y, x, name_stations):
         plt.text(y, x, s, fontsize=15)
 
-    plt.savefig(f"result-pictures/{filename}")
+    plt.savefig(f"Result-pictures/{filename}")
