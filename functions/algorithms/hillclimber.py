@@ -57,7 +57,7 @@ class Hillclimber:
         Changes a random traject from the solution with a created random traject.
         """
         check_trajects = copy.deepcopy(trajects)
-        
+
         # Remove random traject from solution
         check_trajects.pop(random.randrange(len(check_trajects)))
         new_traject = self.mutate_traject(MAX_TIME)
@@ -94,8 +94,8 @@ class Hillclimber:
             # Accepts solution it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
 
-            # When the code is only run 1 time create a visualisation
-            if self.iteration == 1:
-                visualisation(self.graph, self.trajects, 'Hillclimber.png')
+        # When the code is only run 1 time create a visualisation
+        if self.iteration == 1:
+            visualisation(self.graph, self.trajects, 'Hillclimber.png')
 
         return self.quality

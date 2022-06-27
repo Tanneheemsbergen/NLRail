@@ -47,13 +47,13 @@ def main(input_file_name, algorithm, iteration):
             value = hc.get_best_traject
             results.append(value)
         elif algorithm == "ghc":
-            hc = GreedyHillclimber(station_graph, 20000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
+            hc = GreedyHillclimber(station_graph, 10000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
         elif algorithm == "gfhc":
             hc = DepthFirstHillclimber(station_graph, 100, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             hc.get_best_traject
         elif algorithm == "sa":
-            sa = SimulatedAnnealing(station_graph, 5000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME, 3000)
+            sa = SimulatedAnnealing(station_graph, 200000, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME, 3000)
             sa.get_best_traject
             
 
