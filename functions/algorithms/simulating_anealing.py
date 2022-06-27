@@ -24,7 +24,6 @@ class SimulatedAnnealing(Hillclimber):
         super().__init__(graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
 
         
-
     def update_temperature(self) -> None:
         """
         This function implements a *linear* cooling scheme.
