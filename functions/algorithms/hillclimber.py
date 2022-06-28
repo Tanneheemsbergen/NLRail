@@ -4,6 +4,7 @@ from functions.helpers.calculation import calculate_quality
 from functions.helpers.visualisation import visualisation, line_graph
 from functions.algorithms.randomise import random_function
 
+
 class Hillclimber:
     """
     The HillClimber class first creates a random solution. Thereafter, a random traject
@@ -17,14 +18,12 @@ class Hillclimber:
         self.quality = calculate_quality(self.trajects, self.graph, MAX_AMOUNT_TRAJECTS)
         self.get_best_traject = self.run(rounds, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=True)
 
-
     def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         """
         Gets a random solution from the randomise.py algorithm.
         """
         result, trajects = random_function(self.graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
         return trajects
-
 
     def mutate_traject(self, MAX_TIME):
         """
@@ -51,8 +50,7 @@ class Hillclimber:
                 break
         return traject
 
-
-    def mutate_solution(self, trajects,  MAX_TIME):
+    def mutate_solution(self, trajects, MAX_TIME):
         """
         Changes a random traject from the solution with a created random traject.
         """
@@ -76,18 +74,13 @@ class Hillclimber:
             self.trajects = check_trajects
             self.quality = new_quality
 
-
     def run(self, iterations, MAX_TIME, MAX_AMOUNT_TRAJECTS, verbose=False):
         """
         Runs the hillclimber for a chosen amount of iterations.
         """
         self.iterations = iterations
 
-        values = []
-
         for iteration in range(iterations):
-            #print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
-
             new_trajects = copy.deepcopy(self.trajects)
 
             # Creates new solution by replacing one traject
@@ -95,12 +88,9 @@ class Hillclimber:
 
             # Accepts solution it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
-            values.append(self.quality)
 
         # When the code is only run 1 time create a visualisation
         if self.iteration == 1:
             visualisation(self.graph, self.trajects, 'Hillclimber.png')
 
-        #print(values)
-        #line_graph(values)
         return self.quality

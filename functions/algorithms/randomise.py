@@ -4,6 +4,7 @@ from functions.helpers.check50 import check50
 from functions.helpers.calculation import calculate_quality
 from functions.helpers.visualisation import visualisation
 
+
 def random_function(graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
     """
     The random algorithm takes a random start station and from there make random

@@ -11,10 +11,9 @@ class GreedyHillclimber(Hillclimber):
     improvement will be used for the next iteration.
     """
     def __init__(self, graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
-        
+
         # Use the init of the Hillclimber class
         super().__init__(graph, rounds, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
-
 
     def get_solution(self, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME):
         """
@@ -22,7 +21,6 @@ class GreedyHillclimber(Hillclimber):
         """
         result, trajects = greedy_time(self.graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
         return trajects
-
 
     def mutate_traject(self, MAX_TIME):
         """

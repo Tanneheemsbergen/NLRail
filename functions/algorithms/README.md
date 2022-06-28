@@ -13,11 +13,14 @@ Our greedy algorithm is slighty different than our random algorithm. Instead of 
 Because of the formula, a higher percentage of travelled connections and a lower total amount of minutes leads to a higher K-value. By our greedy algorithm choosing the shortest route, and thus the lowest minutes, we thought we could optimize the p, while minimizing the Min.
 
 # Hillclimber
-Our hillclimber starts with making a random solution. From this solution, the K-value gets calculated. When this is done, one of the tracks of the solution gets randomly chosen and using our random, a new track gets made. The K-value is determined again after this. If the K-value of the new solution is higher than the K-value of the old solution, the solution gets replaced.
-The algoithm does this 15000 times.
-We also made a greedy hillclimber, which essentially does the same, but instead of a random track, it creates a greedy track. 
+## Random
+The hill climber first makes with the random algoritmme a solution. The quality of this solution gets calculated. Then it takes a random track from the solution and changes this with another random track and swaps this track with the track that got taken out of the solution. The quality of the new solution gets calulated, if the quality is higher than the quality from the first solution, the solution gets replaced with the new one. The algorithm does this a certain amount of times.
 
-# Simulating Annealing
+## Greedy
+Instead of taking a random solution it creates a solution with the greedy algorithm. The track that is swapped is also created with the greedy algorithm.
+
+# Simulated annealing
+The simulated annealing algorithm is also based on the hill climber. But instead of taking always the option with the highest quality it sometimes also accept solution that have a lower quality. This could make sure it does not stay in a local optimum.
 
 
 

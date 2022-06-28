@@ -46,7 +46,7 @@ In the result-picture folder, all the pictures that are made while running this 
 To run our code you have to give several instructions in the command line:
 python3 main.py {space} {algorithm} {iterations}:
 - The space can be Holland, or Nationaal,
-- The algorithm can be 'r' (random), 'g' (greedy), 'df' (depth-first), 'hc' (hillclimber), 'hcg' (hillclimber greedy),
+- The algorithm can be 'r' (random), 'g' (greedy), 'hc' (hillclimber), 'hcg' (hillclimber greedy), 'sa' (simulated annealing)
 - Iterations can be anything, if it is one, a traject representation will be made, and if it is more than one, a histogram will be made. Both of these will be stored in the Result-picture folder.
 
 
