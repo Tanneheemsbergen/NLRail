@@ -1,7 +1,7 @@
 import random
 import copy
 from functions.helpers.calculation import calculate_quality
-from functions.helpers.visualisation import visualisation
+from functions.helpers.visualisation import visualisation, line_graph
 from functions.algorithms.randomise import random_function
 
 class Hillclimber:
@@ -83,6 +83,8 @@ class Hillclimber:
         """
         self.iterations = iterations
 
+        values = []
+
         for iteration in range(iterations):
             #print(f'Iteration {iteration}/{iterations}, current value: {self.quality}') if verbose else None
 
@@ -93,9 +95,12 @@ class Hillclimber:
 
             # Accepts solution it if it is better
             self.check_solution(check_trajects, MAX_AMOUNT_TRAJECTS)
+            values.append(self.quality)
 
         # When the code is only run 1 time create a visualisation
         if self.iteration == 1:
             visualisation(self.graph, self.trajects, 'Hillclimber.png')
 
+        #print(values)
+        #line_graph(values)
         return self.quality

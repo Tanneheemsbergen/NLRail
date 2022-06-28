@@ -1,14 +1,9 @@
-pytest
-snakeviz
-mypy
-flake8
-
 random
 copy
+math
 csv
 argparse
 statistics
-
 datetime
 numpy
 matplotlib.pyplot

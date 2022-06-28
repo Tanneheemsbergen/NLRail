@@ -28,12 +28,7 @@ class SimulatedAnnealing(Hillclimber):
         method have passed.
         """
         self.T = self.T - (self.T0 / self.iterations)
-<<<<<<< HEAD:functions/algorithms/simulating_anealing.py
-        #print(self.iterations)
-
-=======
   
->>>>>>> 469b19d74239a85cf54c725d4ac20b0fb4335f8f:functions/algorithms/simulated_anealing.py
         # Exponential would look like this:
         # alpha = 0.99
         # self.T = self.T * alpha
