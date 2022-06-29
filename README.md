@@ -14,18 +14,25 @@ Our goals for both Holland and Nationaal was to create a set of trajects (called
 
 # Quality of a solution
 To measure the quality of a solution, we received a score function. This score function can be found beneath. 
-K = p * 10.000 (T*100 - min)
-K = quality of route set
-p = fraction of used connections (between 0 and 1)
-T = amount of routes
-min = total amount of minutes used in all routes
+```shell
+K = p*10.000 (T*100 + Min)
+```
+K = quality of route set,
+
+p = fraction of used connections (between 0 and 1),
+
+T = amount of routes,
+
+Min = total amount of minutes used in all routes.
+
 The idea is, to get the K-value as high as possible.
 
 
 # Getting Started
 The code is written in Python 3.8.10. In requirements.txt all the packages required for running the code can be found. To get these, run:
+```shell
 pip install requirements.txt
-
+```
 
 # Structure
 In the csvfiles folder, the csv files can be found. There are 4 files, namely:
