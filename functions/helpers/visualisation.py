@@ -96,3 +96,4 @@ def visualisation(graph, trajects, filename):
         plt.text(y, x, s, fontsize=15)
 
     plt.savefig(f"Result-pictures/{filename}")
+
