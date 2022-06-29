@@ -1,7 +1,7 @@
 import random
 import copy
 from functions.helpers.calculation import calculate_quality
-from functions.helpers.visualisation import visualisation, line_graph
+from functions.helpers.visualisation import visualisation
 from functions.algorithms.randomise import random_function
 
 

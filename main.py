@@ -1,5 +1,5 @@
 from functions.algorithms.randomise import random_function
-from functions.helpers.visualisation import histogram, multiple_histograms ## VERWIJDEREN !!!!
+from functions.helpers.visualisation import histogram
 from functions.classes.graph_class import Graph
 from functions.algorithms.greedy_time import greedy_time
 from functions.algorithms.greedy_hillclimber import GreedyHillclimber
@@ -30,9 +30,6 @@ def main(input_file_name, algorithm, iteration):
     # Determine which algorithm to use based on the user input
     print("Currently working on creating the visualisation!")
     for i in range(iteration):
-        ## VERWIJDEREN!!!!!
-        print(i)
-        ######
         if algorithm == "r":
             result, trajects = random_function(station_graph, iteration, MAX_AMOUNT_TRAJECTS, MAX_TIME)
             results.append(result)
@@ -56,9 +53,6 @@ def main(input_file_name, algorithm, iteration):
     # Creates a histogram When a algorithm is run more than 1 time
     if iteration > 1:
         histogram(results, space, algorithm)
-
-    # VERWIJDEREN !!!!!!
-    multiple_histograms()
 
 
 if __name__ == "__main__":
